@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>本地拼车</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/local.css" />
+		<style></style>
+	</head>
+	<body>
+		<nav class="navbar navbar-fixed-top">
+			<div class="container" id="topbar"> 
+				<div class="container">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="index.html">
+						<img src="image/logo.png">一起拼车</a>
+					</div>
+				<ul class="nav navbar-nav navbar-right">
+					<li class="active" id="this">
+						<a href="javascript:void(0)" style="cursor:default">本地拼车</a>
+					</li>
+					<li>
+						<a href="nationwide.html">全国拼车</a>
+					</li>
+					<li style="margin-right: 150px;">
+						<a href="userinfo.html">个人中心
+							<span class="badge">14</span>
+						</a>
+					</li>
+					<li>
+						<a href="javascript:void()" data-toggle="modal" data-target="#LoginModal">登陆</a>
+					</li>
+				</ul>
+				</div>	
+			</div>
+		</nav>
+		<!-- 登录注册框 -->
+		<div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document" style="width:30%">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		      </div>
+		      <div class="modal-body">
+		      	<div>
+				  <ul class="nav nav-tabs" role="tablist">
+				    <li role="presentation"><a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">我是司机</a></li>
+				    <li role="presentation" class="active"><a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab" >登录</a></li>
+				    <li role="presentation"><a href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab">我是乘客</a></li>
+				  </ul>
+				  <div class="tab-content">
+				    <div role="tabpanel" class="tab-pane fade in active" id="tab1">
+				    	<form id="loginForm" action="" method="post">
+				        	<div class="form-group">
+				        		<label for="loginAccount">账号:</label>
+				        		<input name="loginAccount" class="form-control" placeholder="13888888888" id="loginAccount">
+				        	</div>
+				        	<div class="form-group">
+				        		<label for="loginPassword">密码:</label>
+				        		<input type="password" name="loginPassword" class="form-control" placeholder="请输入密码" id="loginPassword">
+				        		<div id="findPassword">
+				        			<a href="findPassword.html">忘记密码?</a>
+				        		</div>
+				        		
+				        	</div>
+				        </form>
+				        <div class="modal-footer">
+					        <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+					        <button type="button" class="btn btn-primary">登录</button>
+					    </div>
+				    </div>
+				    <div role="tabpanel" class="tab-pane fade" id="tab2">
+				    	<form id="driRegForm" action="" method="post">
+				        	<div class="form-group">
+				        		<b>*</b>
+				        		<label for="driRegAccount">账号:</label>
+				        		<input type="text" class="form-control" placeholder="请输入11位手机号,方便乘客联系" id="driRegAccount" name="driRegAccount">
+				        	</div>
+				        	<div class="form-group">
+				        		<b>*</b>
+				        		<label for="driRegPassword">密码:</label>
+				        		<input type="password" class="form-control" placeholder="8位以上英文字母或数字组合,不超过16位" id="driRegPassword" name="driRegPassword">
+				        	</div>
+				        	<div class="form-group">
+				        		<b>*</b>
+				        		<label for="driRegPassword2nd">确认密码:</label>
+				        		<input type="password" class="form-control" placeholder="请再次输入密码" id="driRegPassword2nd" name="driRegPassword">
+				        	</div>
+				        	<div class="form-group">
+				        		<b>*</b>
+				        		<label for="driRegUsername">真实姓名:</label>
+				        		<input type="text" class="form-control" placeholder="此选项用于身份验证,请认真填写" id="driRegUsername" name="driRegUsername">
+				        	</div>
+				        	<div class="form-group">
+				        		<b>*</b>
+				        		<label for="driRegId">身份证号:</label>
+				        		<input type="text" class="form-control" placeholder="请输入15位或18位身份证号" id="driRegId" name="driRegId">
+				        	</div>
+				        	<div class="form-group">
+				        		<b>*</b>
+				        		<label for="driRegEmail">验证邮箱:</label>
+				        		<input type="text" class="form-control" placeholder="此邮箱用于账号找回,请认真填写" id="driRegEmail" name="driRegEmail">
+				        	</div>
+				        </form>
+				        <div class="modal-footer">
+					        <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+					        <button type="button" class="btn btn-primary">注册</button>
+					    </div>
+				    </div>
+				    <div role="tabpanel" class="tab-pane fade" id="tab3">
+				    	<form id="pasRegForm" action="" method="post">
+			    			<div class="form-group">
+			        			<b>*</b>
+			        			<label for="pasRegAccount">账号:</label>
+			        			<input name="pasRegAccount" class="form-control" placeholder="请输入11位手机号,方便司机联系" id="pasRegAccount" name="pasRegAccount">
+				        	</div>
+				        	<div class="form-group">
+				        		<b>*</b>
+				        		<label for="pasRegPassword">密码:</label>
+				        		<input type="password" name="loginpassword" class="form-control" placeholder="8位以上英文字母或数字组合,不超过16位" id="pasRegPassword" name="pasRegPassword">
+				        	</div>
+				        	<div class="form-group">
+				        		<b>*</b>
+				        		<label for="pasRegPassword2nd">确认密码:</label>
+				        		<input type="password" name="pasRegPassword2nd" class="form-control" placeholder="请再次输入密码" id="pasRegPassword2nd" name="pasRegPassword2nd">
+				        	</div>
+				        	<div class="form-group">
+				        		<b>*</b>
+				        		<label for="pasRegEmail">验证邮箱:</label>
+				        		<input type="text" name="pasRegEmail" class="form-control" placeholder="此邮箱用于账号找回,请认真填写" id="pasRegPhone" name="pasRegPhone">
+				        	</div>
+				        </form>
+				        <div class="modal-footer">
+					        <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+					        <button type="button" class="btn btn-primary">注册</button>
+					    </div>
+				    </div>
+				  </div>
+				</div>
+		      </div>
+		    
+		    </div>
+		  </div>
+		</div>
+		<div class="container">
+			<div class="jumbotron">
+				<div class="container">
+					<div class="col-md-12" style="margin-bottom:15px">
+						<div id="map"></div>
+						<div class="col-md-6" style="float:right">
+							<ul class="inputbox">
+								<li>
+									<h2>详细搜索</h2>
+								</li>
+								<li>
+									<span>出发地</span>
+									<input type="text" class="form-control input" placeholder="小区名、大厦名、路名及门牌号..."/>
+								</li>
+								<li>
+									<span>目的地</span>
+									<input type="text" class="form-control input" placeholder="小区名、大厦名、路名及门牌号..."/>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<ul class="list-inline" style="text-align: center;float:none" id="menulist">
+							<li style="width: 25%;">
+								<button class="btn btn-primary" data-toggle="modal" data-target="#ChangeCityModal">切换城市</button>
+							</li>
+							<li style="width: 33%;">
+								<button class="btn postbutton" data-toggle="modal" data-target="#PostModal">我要发布拼车信息</button>
+							</li>
+							<li style="width: 25%;">
+								<button class="btn btn-primary">搜索</button>
+							</li>
+						</ul>
+					</div>
+					<div class="col-md-12">
+						<table class="table table-striped table-hover">
+							<thead>
+								<tr>
+									<th>编号</th>
+									<th>路线</th>
+									<th>出发日期</th>
+									<th>出发时间</th>
+									<th>费用</th>
+									<th>已加入</th>
+									<th>可容纳</th>
+									<th>状态</th>
+									<th>发布时间</th>
+								</tr>
+							</thead>
+							<tbody >
+								<tr>
+									<td>1</td>
+									<td><a href="localDetail.html">华南农业大学到太古汇</a><img src="image/city_back.gif"></td>
+									<td>2015年9月1日</td>
+									<td>上午10点</td>
+									<td>20/人</td>
+									<td>0</td>
+									<td>4</td>
+									<td>有效</td>
+									<td>7小时前</td>
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>华南农业大学到太古汇</td>
+									<td>2015年9月1日</td>
+									<td>上午10点</td>
+									<td>20/人</td>
+									<td>0</td>
+									<td>4</td>
+									<td>有效</td>
+									<td>7小时前</td>
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>华南农业大学到太古汇</td>
+									<td>2015年9月1日</td>
+									<td>上午10点</td>
+									<td>20/人</td>
+									<td>0</td>
+									<td>4</td>
+									<td>有效</td>
+									<td>7小时前</td>
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>华南农业大学到太古汇</td>
+									<td>2015年9月1日</td>
+									<td>上午10点</td>
+									<td>20/人</td>
+									<td>0</td>
+									<td>4</td>
+									<td>有效</td>
+									<td>7小时前</td>
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>华南农业大学到太古汇</td>
+									<td>2015年9月1日</td>
+									<td>上午10点</td>
+									<td>20/人</td>
+									<td>0</td>
+									<td>4</td>
+									<td>有效</td>
+									<td>7小时前</td>
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>华南农业大学到太古汇</td>
+									<td>2015年9月1日</td>
+									<td>上午10点</td>
+									<td>20/人</td>
+									<td>0</td>
+									<td>4</td>
+									<td>有效</td>
+									<td>7小时前</td>
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>华南农业大学到太古汇</td>
+									<td>2015年9月1日</td>
+									<td>上午10点</td>
+									<td>20/人</td>
+									<td>0</td>
+									<td>4</td>
+									<td>有效</td>
+									<td>7小时前</td>
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>华南农业大学到太古汇</td>
+									<td>2015年9月1日</td>
+									<td>上午10点</td>
+									<td>20/人</td>
+									<td>0</td>
+									<td>4</td>
+									<td>有效</td>
+									<td>7小时前</td>
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>华南农业大学到太古汇</td>
+									<td>2015年9月1日</td>
+									<td>上午10点</td>
+									<td>20/人</td>
+									<td>0</td>
+									<td>4</td>
+									<td>有效</td>
+									<td>7小时前</td>
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>华南农业大学到太古汇</td>
+									<td>2015年9月1日</td>
+									<td>上午10点</td>
+									<td>20/人</td>
+									<td>0</td>
+									<td>4</td>
+									<td>有效</td>
+									<td>7小时前</td>
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>华南农业大学到太古汇</td>
+									<td>2015年9月1日</td>
+									<td>上午10点</td>
+									<td>20/人</td>
+									<td>0</td>
+									<td>4</td>
+									<td>有效</td>
+									<td>7小时前</td>
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>华南农业大学到太古汇<img src="image/city_back.gif"></td>
+									<td>2015年9月1日</td>
+									<td>上午10点</td>
+									<td>20/人</td>
+									<td>0</td>
+									<td>4</td>
+									<td>有效</td>
+									<td>7小时前</td>
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>华南农业大学到太古汇</td>
+									<td>2015年9月1日</td>
+									<td>上午10点</td>
+									<td>20/人</td>
+									<td>0</td>
+									<td>4</td>
+									<td>有效</td>
+									<td>7小时前</td>
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>华南农业大学到太古汇</td>
+									<td>2015年9月1日</td>
+									<td>上午10点</td>
+									<td>20/人</td>
+									<td>0</td>
+									<td>4</td>
+									<td>有效</td>
+									<td>7小时前</td>
+								</tr>
+							</tbody>
+						</table>
+						<nav style="text-align: center;">
+						  <ul class="pagination">
+						    <li>
+						      <a href="#" aria-label="Previous">
+						        <span aria-hidden="true">&laquo;</span>
+						        上一页
+						      </a>
+						    </li>
+						    <li class="active"><a href="#">1</a></li>
+						    <li><a href="#">2</a></li>
+						    <li><a href="#">3</a></li>
+						    <li><a href="#">...............</a></li>
+						    <li><a href="#">20</a></li>
+						    <li><a href="#">21</a></li>
+						    <li>
+						      <a href="#" aria-label="Next">
+						      	下一页
+						        <span aria-hidden="true">&raquo;</span>
+						        
+						      </a>
+						    </li>
+						  </ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 切换城市-->
+		<div class="modal fade" id="ChangeCityModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">切换城市</h4>
+		      </div>
+		      <div class="modal-body">
+		        ...
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary">Save changes</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		<!-- 发布拼车-->
+		<div class="modal fade" id="PostModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">发布本地拼车</h4>
+		      </div>
+		      <div class="modal-body">
+		        <div id="innerMap"></div>
+                <div class="form-group col-md-5">
+                    <label for="driPostStart">出发地址</label>
+                    <input class="form-control smallInput" id="driPostStart" name="driPostStart">
+                </div>
+                <div class="form-group col-md-5">
+                    <label for="driPostDest">目的地址</label>
+                    <input class="form-control smallInput" id="driPostDest" name="driPostDest">
+                </div>
+                <div class="form-group col-md-5">
+                    <label for="driPostPassby1">途径<span class="smallSpan">(可填)</span></label>
+                    <input class="form-control smallInput" id="driPostPassby1" name="driPostPassby1">
+                </div>
+                <div class="form-group col-md-5">
+                    <label for="driPostPassby2">途径<span class="smallSpan">(可填)</span></label>
+                    <input class="form-control smallInput" id="driPostPassby2" name="driPostPassby2">
+                </div>
+                <div class="form-group col-md-5" style="margin-bottom:0px">
+                    <label for="driPostPassby3">途径<span class="smallSpan">(可填)</span></label>
+                    <input class="form-control smallInput" id="driPostPassby3" name="driPostPassby3">
+                </div>
+                <div class="form-group clear"  style="padding-top:20px;">
+                    <div class="col-md-2">
+                         <label>出发时间</label>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-control">
+                            <option>工作日</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-control">
+                            <option>工作日</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-control">
+                            <option>工作日</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group clear">
+                    <div class="col-md-2">
+                         <label>车型</label>
+                    </div>
+                    <div class="col-md-5">
+                        <select class="form-control">
+                            <option>轿车</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group clear">
+                    <div class="col-md-2">
+                         <label>容纳人数</label>
+                    </div>
+                    <div class="col-md-3">
+                         <input class="form-control" id="driPostPeople" name="driPostPeople">
+                    </div>
+                    <div class="col-md-3">
+                         <label>每人单程费用</label>
+                    </div>
+                    <div class="col-md-3" style="margin-left:-5%">
+                         <input class="form-control" id="driPostPrice" name="driPostPrice">
+                    </div>
+                </div>
+                <div class="form-group clear">
+                    <div class="col-md-2">
+                         <label>说明</label>
+                    </div>
+                    <div class="col-md-9">
+                        <textarea style="width:100%" rows="5"></textarea>
+                    </div>
+                </div>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-primary">立即发布</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		<footer class="footer">
+			<div class="container">
+				<div class="col-md-3 col-md-offset-1">
+					<ul style="list-style: none;">
+						<li>
+							<h3>联系我们</h3>
+						</li>
+						<li>
+							<p>tel:13539778553</p>
+						</li>
+						<li>
+							<p>email:79250013@qq.com</p>
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-5 col-md-offset-2">
+					<ul style="list-style: none;text-align: right;">
+						<li>
+							<h3>一起拼车</h3>
+						</li>
+						<li>
+							<p>Powered by Zacks 2015</p>
+						</li>
+						<li>
+							<p>Copyright © 2015 17pc.com All rights reserved.</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/jquery.validate.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/local.js"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
+		<script type="text/javascript">
+			if(navigator.geolocation){
+				navigator.geolocation.getCurrentPosition(function(position){
+				console.log(position)
+				})
+			}else{
+				alert('your browser does not support geolocation')
+			}
+			var map = new BMap.Map("map");    
+			map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);    
+			map.addControl(new BMap.NavigationControl());
+			map.enableScrollWheelZoom();
+            var map2 = new BMap.Map("innerMap");    
+			map2.centerAndZoom(new BMap.Point(116.404, 39.915), 11);    
+			map2.addControl(new BMap.NavigationControl());
+			map2.enableScrollWheelZoom();
+			// var myGeo = new BMap.Geocoder();      
+			// 将地址解析结果显示在地图上，并调整地图视野    
+			// myGeo.getPoint("海淀区上地10街10号", function(point){      
+			//           if (point) {      
+			//               map.centerAndZoom(point, 16);      
+			//               map.addOverlay(new BMap.Marker(point));      
+			//           }      
+			//       }, "北京市");
+			//输入经纬度转换成地址
+			// myGeo.getLocation(new BMap.Point(116.404, 39.915), function(result){      
+   			//           if (result){      
+   			//               alert(result.address);      
+   			//           }      
+			// });
+			//输入起点跟终点显示路线
+			// var driving = new BMap.DrivingRoute(map, {    
+			//  renderOptions: {    
+			//    map   : map,     
+			//    panel : "results",    
+			//    autoViewport: true    
+			//  }    
+			// });    
+			// driving.search("广州", "北京");
+			$(function(){ 
+				$('#loginPassword').focus(function(){
+					$('#findPassword').fadeToggle('fast');
+				}).blur(function(){
+					$('#findPassword').fadeToggle('fast');
+				})
+			})
+			$().ready(function(){
+				$('#loginForm').validate({
+					rules:{
+						loginAccount:{
+							required:true
+						},
+						loginPassword:{
+							required:true,
+							minlength:8
+						}
+					},
+					messages:{
+						loginAccount:{
+							required:"账户不能为空"
+						},
+						loginPassword:{
+							required:"密码不能为空",
+							minlength:"密码不能少于8位字符"
+						}
+					}
+				});
+			})
+		</script>
+	</body>
+</html>

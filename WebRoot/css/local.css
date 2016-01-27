@@ -1,0 +1,288 @@
+*{
+	margin: 0 0;
+	padding: 0 0;
+}
+body{
+	padding-top: 50px;
+	background-image: url(../image/background.jpg);
+	background-repeat: repeat-x;
+	font-family: "微软雅黑";
+	position: relative;
+}
+.navbar-fixed-top{
+	background: #7089B4;
+	border: none;
+	max-height: 50px;
+	min-height: 50px;
+}
+#topbar a{
+	color: white;
+}
+#topbar a:hover{
+	background: #538BDE;
+}
+.jumbotron{
+	background: transparent;
+	padding-bottom: 0px;
+}
+h2 small{
+	color:white;
+}
+.input{
+	display: inline-block;
+	width: 60%;
+}
+.inputbox{
+	list-style: none;
+}
+.hotbox{
+	list-style: none;
+}
+.hotbox a{
+	color: whitesmoke;
+	text-decoration: none;
+	margin-right: 8%;
+}
+.hotbox a:hover{
+	color: #000000;
+}
+.hotbox li{
+	margin-bottom: 6%;
+}
+.inputbox li{
+	margin: 4.7% 1%;
+}
+.inputbox span{
+	font-size: 1.5em;
+	margin-right:2% ;
+}
+.jumbotron{
+	padding-top: 0px;
+}
+.btn{
+	font-size:1.3em
+}
+#this a{
+	background: #538BDE;
+	color: white;
+}
+img{
+	margin-left: 5px;
+}
+#menulist li button{
+	width: 100%;
+}
+.postbutton{
+	background: orangered;
+	color: white;
+	font-weight: bold;
+} 
+.pagination li a{
+	border: none;
+}
+.big{
+	padding: 30px 15px;
+	position: absolute;
+	top: 50px;
+}
+.list-group a{
+	border: none;
+}
+h4 small{
+	margin-right: 3px;
+}
+li h4{
+	display:inline-block;
+	width: 100%;
+}
+/*登录框*/
+.tab-pane form{
+	margin:30px 0px; 
+}
+.tab-pane .modal-footer{
+	text-align: center;
+}
+label#loginAccount-error,label#loginPassword-error{
+	margin-top: 5px;
+	color: red
+}
+.form-group b{
+	color: red;
+}
+.form-control:focus{
+	background-color: #FDF9C8
+}
+div#findPassword{
+	margin-top: 10px;
+	display: none;
+}
+.nav>li>a:focus{
+	background-color:transparent;
+}
+/*登录框*/
+#LoginModal .nav-tabs li{
+    width: 33.3%;
+    text-align: center;
+}
+.anchorBL{  
+    display:none;  
+}
+.jumbotron .container{
+	padding-top: 10px;
+}
+#map{
+	width: 50%;
+	height: 270px;
+	display: inline-block;
+}
+.col-md-12{
+	 float:none
+}
+.jumbotron{
+	background: white;
+	margin-top: 10px;
+	padding:6px 1px;
+}
+.container .jumbotron{
+	padding-left: 0;
+	padding-right: 0;
+}
+.table-striped>tbody>tr:nth-child(odd)>td, .table-striped>tbody>tr:nth-child(odd)>th{
+	background-color: rgb(237,245,255);
+}
+.table-hover>tbody>tr:hover>td, .table-hover>tbody>tr:hover>th{
+	background-color: rgb(153,183,235);	
+}
+th,td{
+	text-align: center;
+}
+td:nth-child(2),th:nth-child(2){
+	text-align: left;
+}
+.badge{
+	background-color: rgb(66,139,202);
+	margin-top: 1px;
+}
+.active .badge{
+	background-color: #999
+}
+.nav li a .badge{
+	background-color: rgb(240,173,78);
+}
+.list-group-item>.badge{
+	float: none;
+}
+.info-user-head{
+	font-size: 20px;
+	font-weight: bold;
+}
+.info-user-detailDiv{
+/*	border: 1px solid rgb(66,139,202);*/
+	padding: 10px 15px 0px 15px;
+	text-align: left;
+	margin-right: 2%;
+}
+.info-user-detailDiv p:nth-child(1){
+	font-weight: bold;
+}
+.glyphicon-ok{
+	color: green;
+}
+.glyphicon-remove{
+	color: red;
+}
+ul{
+	margin-bottom: 0px;
+}
+p.small{
+	font-size: 16px;
+}
+p.small button{
+	padding: 2px 5px;
+	text-align: center;
+	vertical-align: center;
+	background: rgb(66,139,202);
+	border: 1px solid grey;
+	border-radius: 2px;
+	color: white;
+	margin-left: 5px;
+}
+p.small img{
+	height: 23px;
+	cursor: pointer;
+	margin-left: 15px;
+	margin-bottom: 5px;
+}
+.jumbotron .col-md-9{
+	text-align: center;
+}
+.info-div{
+	display: none;
+}
+#chart{
+	clear: both;
+	padding-left: 0px;
+	display: none;
+	margin-right: 20px;
+}
+.table{
+	margin-bottom: 0px;
+}
+.navbar-header img{
+	margin-right: 10px;
+	margin-top: -10px;
+	height:40px;
+	vertical-align:middle
+}
+.footer{
+	background: #323B44;
+	border-top: 1px solid cadetblue;
+	width: 100%;
+	border-bottom: 1px solid #323B44;
+	color: white;
+	padding: 15px 0;
+}
+.footer p{
+	color: orange;
+}
+.modal-header{
+	background-color: rgb(83,139,222);
+	color: white;
+	font-weight: bold;
+}
+ul.nav-tabs li{
+	width: 20%;
+}
+#innerMap{
+    float: right;
+    width: 63%;
+    height: 230px;
+}
+#PostModal .modal-body{
+    overflow: hidden;
+    padding-left: 0;
+}
+#PostModal .form-group{
+    padding-right: 0;
+}
+.smallInput{
+    width: 60%;
+    float: right;
+}
+#PostModal label{
+    padding-top: 7px;
+}
+.smallSpan{
+    color: rgb(147,147,147);
+    font-size:70%;
+}
+#PostModal .col-md-5{
+    width:35%; 
+}
+.clear{
+    clear: both;
+    overflow: hidden
+}
+.modal-footer{
+    text-align: center;
+}

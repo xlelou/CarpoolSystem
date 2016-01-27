@@ -1,0 +1,37 @@
+.mid{
+    text-align: center;
+}
+.pd20{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.pd20 .col-md-8{
+    border-right:1px solid rgb(204, 220, 245);
+}
+.col-md-12.pd20{
+    border-bottom: 1px solid rgb(204, 220, 245);
+    overflow: hidden;
+}
+.mrlb20{
+    margin-left: 20px;
+    margin-bottom:20px;
+}
+.smallGray{
+    font-size: 14px;
+    color: grey
+}
+.col-md-12.pd20 .col-md-3{
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+#dtDriverDetail{
+    border:1px solid grey;
+    background-color: rgb(204, 220, 245);
+    overflow: hidden;
+    padding: 20px 20px;
+    margin-top: 20px;
+}
+#dtDriverDetail .col-md-4{
+    margin-bottom: 10px;
+    overflow: hidden;
+}

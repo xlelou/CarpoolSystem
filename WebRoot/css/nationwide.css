@@ -1,0 +1,224 @@
+*{
+	margin: 0 0;
+	padding: 0 0;
+}
+body{
+	padding-top: 50px;
+	background-image: url(../image/background.jpg);
+	background-repeat: repeat-x;
+	font-family: "微软雅黑";
+	position: relative;
+}
+.navbar-fixed-top{
+	background: #7089B4;
+	border: none;
+	max-height: 50px;
+	min-height: 50px;
+}
+#topbar a{
+	color: white;
+}
+#topbar a:hover{
+	background: #538BDE;
+}
+.jumbotron{
+	background: transparent;
+	padding-bottom: 0px;
+}
+h2 small{
+	color:white;
+}
+.input{
+	display: inline-block;
+	width: 60%;
+}
+.inputbox{
+	list-style: none;
+}
+.hotbox{
+	list-style: none;
+}
+.hotbox a{
+	color: black;
+	text-decoration: none;
+	margin-right: 8%;
+}
+.hotbox a:hover{
+	color: #000000;
+}
+.hotbox li{
+	margin-bottom: 6%;
+}
+.inputbox li{
+	margin: 4.7% 1%;
+}
+.inputbox span{
+	font-size: 1.5em;
+	margin-right:2% ;
+	color: white;
+}
+.jumbotron{
+	padding-top: 0px;
+}
+.btn{
+	font-size:1.3em
+}
+#this a{
+	background: #538BDE;
+	color: white;
+}
+img{
+	margin-left: 5px;
+}
+#menulist li button{
+	width: 100%;
+}
+.postbutton{
+	background: orangered;
+	color: white;
+	font-weight: bold;
+} 
+.pagination li a{
+	border: none;
+}
+.big{
+	padding: 30px 15px;
+	position: absolute;
+	top: 50px;
+}
+.list-group a{
+	border: none;
+}
+h4 small{
+	margin-right: 3px;
+}
+li h4{
+	display:inline-block;
+	width: 100%;
+}
+/*登录框*/
+#LoginModal .nav-tabs li{
+    width: 33.3%;
+    text-align: center;
+}
+.modal-header{
+	border-bottom: none
+}
+.tab-pane form{
+	margin:30px 0px; 
+}
+.tab-pane .modal-footer{
+	text-align: center;
+}
+label#loginAccount-error,label#loginPassword-error{
+	margin-top: 5px;
+	color: red
+}
+.form-group b{
+	color: red;
+}
+.form-control:focus{
+	background-color: #FDF9C8
+}
+div#findPassword{
+	margin-top: 10px;
+	display: none;
+}
+.nav>li>a:focus{
+	background-color:transparent;
+}
+/*登录框*/
+.anchorBL{  
+    display:none;  
+}
+#map{
+	width: 100%;
+	margin-top: 10px;
+	min-height: 475px;
+}
+.hotline{
+	border: 1px solid grey;
+	padding: 0px 15px 10px 15px;
+	margin-top: 20px;
+	font-size: 13px;
+}
+.hotline ul{
+	list-style: none;
+	margin-bottom: 0px;
+}
+.hotline ul span{
+	margin-right: 5px;
+}
+.hotline ul li{
+	margin-top: 10px;
+	width: 100%
+}
+.jumbotron{
+	background: white;
+	margin-top: 10px;
+	padding:6px 1px;
+}
+.container .jumbotron{
+	padding-left: 0;
+	padding-right: 0;
+}
+.table-striped>tbody>tr:nth-child(odd)>td, .table-striped>tbody>tr:nth-child(odd)>th{
+	background-color: rgb(237,245,255);
+}
+.table-hover>tbody>tr:hover>td, .table-hover>tbody>tr:hover>th{
+	background-color: rgb(153,183,235);
+}
+td,th{
+	text-align: center;
+}
+.nav li a .badge{
+	background-color: rgb(240,173,78);
+}
+.table{
+	margin-bottom: 0px;
+}
+.navbar-header img{
+	margin-right: 10px;
+	margin-top: -10px;
+	height:40px;
+	vertical-align:middle
+}
+.footer{
+	background: #323B44;
+	border-top: 1px solid cadetblue;
+	width: 100%;
+	border-bottom: 1px solid #323B44;
+	color: white;
+	padding: 15px 0;
+}
+.footer p{
+	color: orange;
+}
+.modal-header{
+	background-color: rgb(83,139,222);
+	color: white;
+	font-weight: bold;
+}
+ul.nav-tabs li{
+	width: 20%;
+}
+.col-md-2.control-label{
+	padding-top: 7px;
+}
+.tab-pane .form-group{
+	clear: both;
+	overflow: hidden;
+	margin-bottom: 10px;
+}
+.modal-footer{
+	clear: both
+}
+#driPost,#pasPost{
+	padding-top: 10px;
+}
+.modal-footer{
+    text-align: center;
+}
+#driPostPrice,#pasPostPrice{
+    margin-left: -30%
+}

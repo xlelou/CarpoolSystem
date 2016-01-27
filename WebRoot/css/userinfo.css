@@ -1,0 +1,21 @@
+.panel-body .col-md-12{
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.col-md-3 label{
+    padding-top: 7px;
+}
+.pd20{
+    padding-top: 20px;
+}
+#programPostedDiv .nav-tabs li,#programAppliedDiv .nav-tabs li{
+    width: 25%;
+}
+#messageRead th:nth-child(1),#messageUnread th:nth-child(1){
+	width: 60%;
+	text-align: left;
+}
+#messageRead td:nth-child(1),#messageUnread td:nth-child(1){
+	width: 60%;
+	text-align: left;
+}

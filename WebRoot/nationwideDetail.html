@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>全国拼车</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/nationwide.css" />
+		<link rel="stylesheet" href="css/jquery-ui.css"/>
+        <link rel="stylesheet" href="css/nationwideDetail.css" />
+		<style></style>
+	</head>
+	<body>
+		<nav class="navbar navbar-fixed-top">
+			<div class="container" id="topbar"> 
+				<div class="container">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="index.html">
+						<img src="image/logo.png">一起拼车</a>
+					</div>
+				<ul class="nav navbar-nav navbar-right">
+					<li >
+						<a href="local.html">本地拼车</a>
+					</li>
+					<li class="active" id="this"> 
+						<a href="javascript:void" style="cursor:default">全国拼车</a>
+					</li>
+					<li style="margin-right: 150px;">
+						<a href="userinfo.html">个人中心
+							<span class="badge">14</span>
+						</a>
+					</li>
+					<li>
+						<a href="#" data-toggle="modal" data-target="#LoginModal">登陆</a>
+					</li>
+				</ul>
+				</div>	
+			</div>
+		</nav>
+		<!-- 登录注册框 -->
+		<div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document" style="width:30%">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		      </div>
+		      <div class="modal-body">
+		      	<div>
+				  <ul class="nav nav-tabs" role="tablist">
+				    <li role="presentation"><a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">我是司机</a></li>
+				    <li role="presentation" class="active"><a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab" >登录</a></li>
+				    <li role="presentation"><a href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab">我是乘客</a></li>
+				  </ul>
+				  <div class="tab-content">
+				    <div role="tabpanel" class="tab-pane fade in active" id="tab1">
+				    	<form id="loginForm" action="" method="post">
+				        	<div class="form-group">
+				        		<label for="loginAccount">账号:</label>
+				        		<input name="loginAccount" class="form-control" placeholder="13888888888" id="loginAccount">
+				        	</div>
+				        	<div class="form-group">
+				        		<label for="loginPassword">密码:</label>
+				        		<input type="password" name="loginPassword" class="form-control" placeholder="请输入密码" id="loginPassword">
+				        		<div id="findPassword">
+				        			<a href="findPassword.html">忘记密码?</a>
+				        		</div>
+				        		
+				        	</div>
+				        </form>
+				        <div class="modal-footer">
+					        <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+					        <button type="button" class="btn btn-primary">登录</button>
+					    </div>
+				    </div>
+				    <div role="tabpanel" class="tab-pane fade" id="tab2">
+				    	<form id="driRegForm" action="" method="post">
+				        	<div class="form-group">
+				        		<b>*</b>
+				        		<label for="driRegAccount">账号:</label>
+				        		<input type="text" class="form-control" placeholder="请输入11位手机号,方便乘客联系" id="driRegAccount" name="driRegAccount">
+				        	</div>
+				        	<div class="form-group">
+				        		<b>*</b>
+				        		<label for="driRegPassword">密码:</label>
+				        		<input type="password" class="form-control" placeholder="8位以上英文字母或数字组合,不超过16位" id="driRegPassword" name="driRegPassword">
+				        	</div>
+				        	<div class="form-group">
+				        		<b>*</b>
+				        		<label for="driRegPassword2nd">确认密码:</label>
+				        		<input type="password" class="form-control" placeholder="请再次输入密码" id="driRegPassword2nd" name="driRegPassword">
+				        	</div>
+				        	<div class="form-group">
+				        		<b>*</b>
+				        		<label for="driRegUsername">真实姓名:</label>
+				        		<input type="text" class="form-control" placeholder="此选项用于身份验证,请认真填写" id="driRegUsername" name="driRegUsername">
+				        	</div>
+				        	<div class="form-group">
+				        		<b>*</b>
+				        		<label for="driRegId">身份证号:</label>
+				        		<input type="text" class="form-control" placeholder="请输入15位或18位身份证号" id="driRegId" name="driRegId">
+				        	</div>
+				        	<div class="form-group">
+				        		<b>*</b>
+				        		<label for="driRegEmail">验证邮箱:</label>
+				        		<input type="text" class="form-control" placeholder="此邮箱用于账号找回,请认真填写" id="driRegEmail" name="driRegEmail">
+				        	</div>
+				        </form>
+				        <div class="modal-footer">
+					        <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+					        <button type="button" class="btn btn-primary">注册</button>
+					    </div>
+				    </div>
+				    <div role="tabpanel" class="tab-pane fade" id="tab3">
+				    	<form id="pasRegForm" action="" method="post">
+			    			<div class="form-group">
+			        			<b>*</b>
+			        			<label for="pasRegAccount">账号:</label>
+			        			<input name="pasRegAccount" class="form-control" placeholder="请输入11位手机号,方便司机联系" id="pasRegAccount" name="pasRegAccount">
+				        	</div>
+				        	<div class="form-group">
+				        		<b>*</b>
+				        		<label for="pasRegPassword">密码:</label>
+				        		<input type="password" name="loginpassword" class="form-control" placeholder="8位以上英文字母或数字组合,不超过16位" id="pasRegPassword" name="pasRegPassword">
+				        	</div>
+				        	<div class="form-group">
+				        		<b>*</b>
+				        		<label for="pasRegPassword2nd">确认密码:</label>
+				        		<input type="password" name="pasRegPassword2nd" class="form-control" placeholder="请再次输入密码" id="pasRegPassword2nd" name="pasRegPassword2nd">
+				        	</div>
+				        	<div class="form-group">
+				        		<b>*</b>
+				        		<label for="pasRegEmail">验证邮箱:</label>
+				        		<input type="text" name="pasRegEmail" class="form-control" placeholder="此邮箱用于账号找回,请认真填写" id="pasRegPhone" name="pasRegPhone">
+				        	</div>
+				        </form>
+				        <div class="modal-footer">
+					        <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+					        <button type="button" class="btn btn-primary">注册</button>
+					    </div>
+				    </div>
+				  </div>
+				</div>
+		      </div>
+		    
+		    </div>
+		  </div>
+		</div>
+		<div class="modal fade" id="PostModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel">发布长途拼车</h4>
+			      </div>
+			      <div class="modal-body">
+			        <div>
+						<ul class="nav nav-tabs" role="tablist">
+						    <li role="presentation" class="active"><a href="#driPost" aria-controls="home" role="tab" data-toggle="tab">我是司机</a></li>
+						    <li role="presentation"><a href="#pasPost" aria-controls="profile" role="tab" data-toggle="tab">我是乘客</a></li>
+						</ul>
+						<div class="tab-content">
+						    <div role="tabpanel" class="tab-pane active fade in" id="driPost">
+						    	<div class="form-group">
+							    	<label for="driPostStartCity" class="col-md-2 control-label">出发城市</label>
+							    	<div class="col-md-3">
+							      		<input type="text" class="form-control" id="driPostStartCity" name="driPostStartCity">
+							    	</div>
+							    	<label for="driPostDestCity" class="col-md-2 control-label">目的城市</label>
+							    	<div class="col-md-3">
+							      		<input type="email" class="form-control" id="driPostDestCity" name="driPostDestCity">
+							    	</div>
+							  	</div>
+							  	<div class="form-group">
+							    	<label for="driPostStartDate" class="col-md-2 control-label">出发时间</label>
+							    	<div class="col-md-3">
+							      		<input type="text" class="form-control" id="driPostStartDate" name="driPostStartDate">
+							    	</div>
+							    	<div class="col-md-3">
+							      		<select class="form-control">
+							      			<option>1</option>
+							      			<option>2</option>
+							      			<option>3</option>
+							      		</select>
+							    	</div>
+							  	</div>
+							  	<div class="form-group">
+							  		<label for="driPostPeople" class="col-md-2 control-label">参加人数</label>
+							  		<div class="col-md-2">
+							  			<input type="text" class="form-control" id="driPostPeople" name="driPostPeople">
+							  		</div>
+							  	</div>
+							  	<div class="form-group">
+							  		<label class="col-md-2 control-label">车型</label>
+							  		<label class="col-md-2 control-label">
+                                          <input type="radio" name="carRadios" id="carRadios1" value="轿车" checked="checked">
+                                          轿车      
+                                    </label>
+                                    <label class="col-md-2 control-label">
+                                          <input type="radio" name="carRadios" id="carRadios2" value="SUV">
+                                          SUV      
+                                    </label>
+                                    <label class="col-md-2 control-label">
+                                          <input type="radio" name="carRadios" id="carRadios3" value="客车">
+                                          客车      
+                                    </label>
+                                    <label class="col-md-2 control-label">
+                                          <input type="radio" name="carRadios" id="carRadios4" value="其它">
+                                          其它      
+                                    </label>
+							  	</div>
+                                <div class="form-group">
+							  		<label class="col-md-2 control-label">费用</label>
+							  		<label class="col-md-2 control-label">
+                                          <input type="radio" name="priceRadios" id="priceRadios1" value="面议" checked="checked">
+                                          面议      
+                                    </label>
+                                    <label class="col-md-2 control-label">
+                                          <input type="radio" name="priceRadios" id="priceRadios2" value="免费">
+                                          免费     
+                                    </label>
+                                    <label class="col-md-2 control-label">
+                                          <input for="driPostPrice" type="radio" name="priceRadios" id="priceRadios3" value="一口价">
+                                          一口价
+                                    </label>
+                                    <label class="col-md-2">
+                                        <input type="text" class="form-control" name="driPostPrice" id="driPostPrice">
+                                    </label>
+							  	</div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">说明 ：</label>
+                                    <div class="col-md-9">
+                                         <textarea class="form-control" rows="5"></textarea>
+                                    </div>
+                                </div>
+						    </div>
+						    <div role="tabpanel" class="tab-pane fade" id="pasPost">
+                                <div class="form-group">
+							    	<label for="pasPostStartCity" class="col-md-2 control-label">出发城市</label>
+							    	<div class="col-md-3">
+							      		<input type="text" class="form-control" id="pasPostStartCity" name="pasPostStartCity">
+							    	</div>
+							    	<label for="pasPostDestCity" class="col-md-2 control-label">目的城市</label>
+							    	<div class="col-md-3">
+							      		<input type="text" class="form-control" id="pasPostDestCity" name="pasPostDestCity">
+							    	</div>
+							  	</div>
+							  	<div class="form-group">
+							    	<label for="pasPostStartDate" class="col-md-2 control-label">出发时间</label>
+							    	<div class="col-md-3">
+							      		<input type="text" class="form-control" id="pasPostStartDate" name="pasPostStartDate">
+							    	</div>
+							    	<div class="col-md-3">
+							      		<select class="form-control">
+							      			<option>1</option>
+							      			<option>2</option>
+							      			<option>3</option>
+							      		</select>
+							    	</div>
+							  	</div>
+							  	<div class="form-group">
+							  		<label for="pasPostPeople" class="col-md-2 control-label">参加人数</label>
+							  		<div class="col-md-2">
+							  			<input type="text" class="form-control" id="pasPostPeople" name="pasPostPeople">
+							  		</div>
+							  	</div>
+                                 <div class="form-group">
+							  		<label class="col-md-2 control-label">费用</label>
+							  		<label class="col-md-2 control-label">
+                                          <input type="radio" name="priceRadios" id="priceRadios1" value="面议" checked>
+                                          面议      
+                                    </label>
+                                    <label class="col-md-2 control-label">
+                                          <input for="driPostPrice" type="radio" name="priceRadios" id="priceRadios2" value="一口价">
+                                          一口价
+                                    </label>
+                                    <label class="col-md-2">
+                                        <input type="text" class="form-control" name="pasPostPrice" id="pasPostPrice">
+                                    </label>
+							  	</div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">说明 ：</label>
+                                    <div class="col-md-9">
+                                         <textarea class="form-control" rows="5"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+						</div>
+					</div>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-primary">立即发布</button>
+			      </div>
+			    </div>
+			  </div>
+		</div>
+		<div class="container">
+			<div class="jumbotron">
+				<div class="container">
+					<div class="col-md-8">
+						<ul class="hotbox">
+							<li>
+								<h2>热门路线</h2>
+							</li>
+							<li>
+								<h4>
+									<a href="#">北京到广州</a>
+									<a href="#">广州到上海</a>
+									<a href="#">上海到北京</a>
+									<a href="#">上海到北京</a>
+								</h4>
+							</li>
+							<li>
+								<h4>
+									<a href="#">武汉到长春</a>
+									<a href="#">成都到深圳</a>
+									<a href="#">长春到郑州</a>
+									<a href="#">上海到北京</a>
+								</h4>
+							</li>
+						</ul>
+					</div>
+					<div class="col-md-4" style="position: relative;">
+						<button class="btn btn-lg postbutton big" data-toggle="modal" data-target="#PostModal">我要发布拼车信息</button>
+					</div>
+					<div class="col-md-12" style="text-align:center">
+						<ul class="list-inline">
+							<li>
+								<h4>出发城市</h4>
+							<li>
+								<input type="text" class="form-control" style="display: inline-block;"/>
+							</li>
+							<li>
+								<h4>目的城市</h4>
+							</li>
+							<li>
+								<input type="text" class="form-control" style="display: inline-block;"/>
+							</li>
+							<li>
+								<h4>出发日期</h4>
+							</li>
+							<li>
+								<input type="text" id="searchDate" class="form-control" style="display: inline-block;"/>
+							</li>
+							<li>
+								<button class="btn btn-primary" style="padding: 2px 10px;margin-bottom: 3px ;">
+									搜索
+								</button>
+							</li>
+					</ul>
+					</div>
+					<div class="col-md-5">
+						<div id="map"></div>
+						<div class="hotline">
+							<ul>
+								<li>
+									<span>热门出发：</span>
+									<span><a>北京</a>(11874)</span>
+									<span><a>北京</a>(11874)</span>
+									<span><a>北京</a>(11874)</span>
+								</li>
+								<li>
+									<span>热门到达：</span>
+									<span><a>北京</a>(11874)</span>
+									<span><a>北京</a>(11874)</span>
+									<span><a>北京</a>(11874)</span>
+								</li>
+								<li>
+									<span>热门路线：</span>
+									<span><a>广州到北京</a>(11874)</span>
+									<span><a>中山到湖北</a>(11874)</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-7" >
+                        <div class="col-md-12 pd20 borderdown">
+                            <p>
+                                <span class="smallGrey">信息状态 ：</span>
+                                <span id="dtStatus">有效</span>
+                            </p>
+                            <p>
+                                <span class="smallGrey">出发城市 ：</span>
+                                <span id="dtStart">深圳</span>
+                                <img src="image/to_line.gif">
+                                <span class="smallGrey">目的城市 ：</span>
+                                <span id="dtDest">武冈</span>
+                            </p>
+                            <p>
+                                <span class="smallGrey">出发时间 ：</span>
+                                <span id="dtStartDate">2016-01-22</span>
+                                <span id="dtStartTime">早上(6:00-11:00)</span>
+                            </p>
+                        </div>
+                        <div class="col-md-12 nopadding pd20">
+                            <div class="col-md-4">
+                                <span class="smallGrey">总里程约 ：</span>
+                                <span id="dtDistance">982.8公里</span>
+                            </div>
+                            <div class="col-md-4">
+                                <span class="smallGrey">汽油费约 ：</span>
+                                <span id="dtFuelPrice">624元</span>
+                            </div>
+                            <div class="col-md-4">
+                                <span class="smallGrey">路桥费约 ：</span>
+                                <span id="dtTax">385元</span>
+                            </div>
+                            <div class="col-md-4">
+                                <span class="smallGrey">可容纳人数 ：</span>
+                                <span id="dtPeople">4人</span>
+                            </div>
+                            <div class="col-md-4">
+                                <span class="smallGrey">已报名人数 ：</span>
+                                <span id="dtPeopleApply">1人</span>
+                            </div>
+                            <div class="col-md-4">
+                                已有<span id="dtPeopleApplied">0</span>人申请加入此拼车
+                            </div>
+                            <div class="col-md-4">
+                                <span class="smallGrey">汽车类型 ：</span>
+                                <span id="dtCarType">轿车</span>
+                            </div>
+                            <div class="col-md-4">
+                                <span class="smallGrey">费用方式 ：</span>
+                                <span id="dtPayType">面议</span>
+                            </div>
+                            <div class="col-md-4 passengerDiv">
+                                已有<span id="dtPeopleInvite">3</span>人邀请该乘客
+                            </div>
+                            <div class="col-md-12">
+                                <span class="smallGrey">车主留言 ：</span>
+                            </div>
+                            <div class="col-md-12" style="padding:0px 20px">
+                                <span id="dtMessage">
+                                    补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充
+                                </span>
+                            </div>
+                            <div class="col-md-12 pd10">
+                                <button class="btn btn-primary btn-sm">申请加入</button>
+                                <button class="btn btn-primary btn-sm">获取车主联系手机</button>
+                            </div>
+                            <div class="col-md-12" id="dtDriverDetail">
+                                <div class="col-md-6">
+                                    <span>发布用户 ：</span>
+                                    <span id="dtDriverName">黄师傅</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <span>认证情况 ：</span>
+                                    <span id="dtDriverValidate">黄师傅</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <span>诚信指数 ：</span>
+                                    <span id="dtDriverCredit">高</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <span>拼车编号 ：</span>
+                                    <span id="dtCode">110</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <span>发布时间 ：</span>
+                                    <span id="dtPostDate">2016-01-05</span>
+                                    <span id="dtPostTime">17:30</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <span>浏览次数</span>
+                                    <span id="dtViewTime">23次</span>
+                                </div>
+                            </div>
+                        </div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer class="footer">
+			<div class="container">
+				<div class="col-md-3 col-md-offset-1">
+					<ul style="list-style: none;">
+						<li>
+							<h3>联系我们</h3>
+						</li>
+						<li>
+							<p>tel:13539778553</p>
+						</li>
+						<li>
+							<p>email:79250013@qq.com</p>
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-5 col-md-offset-2">
+					<ul style="list-style: none;text-align: right;">
+						<li>
+							<h3>一起拼车</h3>
+						</li>
+						<li>
+							<p>Powered by Zacks 2015</p>
+						</li>
+						<li>
+							<p>Copyright © 2015 17pc.com All rights reserved.</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/jquery.validate.js"></script>
+	 	<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/jquery-ui.js"></script>
+		<script type="text/javascript" src="js/nationwide.js"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
+		<script>
+		var map = new BMap.Map("map");    
+			map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);    
+			map.addControl(new BMap.NavigationControl());
+			map.enableScrollWheelZoom();
+		$(function(){
+		    $("#searchDate").datepicker({
+	      		showAnim:"slide",
+	      		dateFormat:"yy-mm-dd"
+		    });
+		});
+		$(function(){
+				$('#loginPassword').focus(function(){
+					$('#findPassword').fadeToggle('fast');
+				}).blur(function(){
+					$('#findPassword').fadeToggle('fast');
+				})
+			})
+		$().ready(function(){
+			$('#loginForm').validate({
+				rules:{
+					loginAccount:{
+						required:true,
+					},
+					loginPassword:{
+						required:true,
+						minlength:8
+					}
+				},
+				messages:{
+					loginAccount:{
+						required:"账户不能为空"
+					},
+					loginPassword:{
+						required:"密码不能为空",
+						minlength:"密码不能少于8位字符",
+					}
+				}
+			});
+		})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="com" extends="struts-default" namespace="/">
+		<!-- <action name="login" class="loginIndex">
+			<result name="success">/index.jsp</result>
+			<result name="err">/index.html</result>
+		</action> -->
+		<action name="test" class="test" method="test"></action>
+		<action name="login" class="login" method="login"></action>
+		<action name="applycarpool" class="applycarpool" method="apply"></action>
+		<action name="getcarpool" class="getcarpool" method="get"></action>
+		<action name="getinfo" class="getinfo" method="get"></action>
+		<action name="saveinfo" class="saveinfo" method="save"></action>
+		<action name="localpost" class="localpost" method="post"></action>
+		<action name="nationpost" class="nationpost" method="post"></action>
+		<action name="readmessage" class="readmessage" method="read"></action>
+		<action name="deletemessage" class="deletemessage" method="delete"></action>
+		<action name="getmessage" class="getmessage" method="get"></action>
+		<action name="sendmessage" class="sendmessage" method="send"></action>
+		<action name="register" class="register" method="register"></action>
+	</package>
+</struts> 
+ 

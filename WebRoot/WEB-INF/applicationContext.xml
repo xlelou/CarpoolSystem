@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url"
+			value="jdbc:mysql://127.0.0.1:3306/cpsystem">
+		</property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>com/ssh/model/User.hbm.xml</value>
+				<value>com/ssh/model/DriverInfo.hbm.xml</value>
+				<value>com/ssh/model/Local.hbm.xml</value>
+				<value>com/ssh/model/Message.hbm.xml</value>
+				<value>com/ssh/model/Nation.hbm.xml</value>
+				<value>com/ssh/model/PassengerInfo.hbm.xml</value>
+				<value>com/ssh/model/Router.hbm.xml</value></list>
+		</property></bean>
+<!-- 	
+	<bean id="userService" class="com.ssh.service.impl.UserService">
+	<property name="userDAO">
+		<ref bean="UserDAO"/>
+	</property>
+	</bean>
+ -->
+	<bean id="getConn" class="com.ssh.service.impl.GetConn"></bean>
+	<bean id="loginIndex" class="com.ssh.action.LoginIndex"></bean>
+	<bean id="DriverInfoDAO" class="com.ssh.dao.impl.DriverInfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="LocalDAO" class="com.ssh.dao.impl.LocalDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="MessageDAO" class="com.ssh.dao.impl.MessageDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="NationDAO" class="com.ssh.dao.impl.NationDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="PassengerInfoDAO"
+		class="com.ssh.dao.impl.PassengerInfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="RouterDAO" class="com.ssh.dao.impl.RouterDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="UserDAO" class="com.ssh.dao.impl.UserDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="test" class="com.ssh.action.api.Test" scope="prototype"></bean>
+	<bean id="login" class="com.ssh.action.api.Login" scope="prototype"></bean>
+	<bean id="applycarpool" class="com.ssh.action.api.ApplyCarpool" scope="prototype"></bean>
+	<bean id="deletemessage" class="com.ssh.action.api.DeleteMessage" scope="prototype"></bean>
+	<bean id="getcarpool" class="com.ssh.action.api.GetCarpool" scope="prototype"></bean>
+	<bean id="getinfo" class="com.ssh.action.api.Getinfo" scope="prototype"></bean>
+	<bean id="localpost" class="com.ssh.action.api.Localpost" scope="prototype"></bean>
+	<bean id="nationpost" class="com.ssh.action.api.Nationpost" scope="prototype"></bean>
+	<bean id="readmessage" class="com.ssh.action.api.ReadMessage" scope="prototype"></bean>
+	<bean id="register" class="com.ssh.action.api.Register" scope="prototype"></bean>
+	<bean id="saveinfo" class="com.ssh.action.api.Saveinfo" scope="prototype"></bean>
+	<bean id="sendmessage" class="com.ssh.action.api.SendMessage" scope="prototype"></bean>
+	<bean id="getmessage" class="com.ssh.action.api.GetMessage" scope="prototype"></bean>
+</beans>

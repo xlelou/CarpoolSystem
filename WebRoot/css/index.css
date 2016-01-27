@@ -1,0 +1,137 @@
+*{
+	margin: 0 0;
+	padding: 0 0;
+}
+body{
+	background-image: none;
+}
+.indexflash{
+	width: 100% !important;
+	margin-left: -5px;
+	/*max-height: 470px !important;*/
+	position: relative;
+}
+.slideOneText{
+	top: 23%;
+	left: 13%;
+	position: absolute;
+	color: #666;
+}
+.slideOneText ul{
+	list-style: none;
+	margin-top: 10%;
+}
+.slideOneText h1{
+	font-weight: bold;
+}
+#postMenu{
+	position: relative;
+	padding: 5px 30px 10px 60px;
+	background: ghostwhite;
+	color: #666666;
+	border-bottom: 1px solid gainsboro;
+}
+#postMenu h1{
+	display: inline-block;
+}
+.mid{
+	position: absolute;
+	top: 28%;
+	right: 10%;
+}
+.row{
+	padding-top:40px;
+}
+#options div{
+	text-align:center;
+	position:relative;
+}
+#options h4{
+	font-weight: bold;
+	font-size: 1.5em;
+	margin: 5% 0px;
+}
+#options p{
+	font-size: 1.1em;
+}
+#benefit .col-md-4{
+	text-align: center;
+	padding: 3% 20px;
+	position: relative;
+}
+.benefit-inner{
+	border: 1px solid gainsboro;
+	border-bottom: 3px solid #7089B4;
+	background: white;
+	height: 80%;
+	padding: 50px;
+	position: relative;
+}
+.benefit-top{
+	position: absolute;
+	top: -40px;
+	left: 37%;
+	right: 40%;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	text-align: center;
+	font-size: 1.5em;
+	background: gray;
+	color: white;
+	border: 3px solid #7089B4;
+}
+.benefit-logo{
+	position: relative;
+	top: 30%;
+}
+.footer{
+	background: #323B44;
+	border-top: 1px solid cadetblue;
+	width: 100%;
+	border-bottom: 1px solid #323B44;
+	color: white;
+	padding: 15px 0;
+}
+.footer p{
+	color: orange;
+}
+/*登录框*/
+.nav-tabs li{
+	width: 33.3%;
+	text-align: center;
+}
+.modal-header{
+	border-bottom: none
+}
+.tab-pane form{
+	margin:30px 0px; 
+}
+.tab-pane .modal-footer{
+	text-align: center;
+}
+label#account-error,label#password-error{
+	margin-top: 5px;
+	color: red
+}
+.form-group b{
+	color: red;
+}
+.form-control:focus{
+	background-color: #FDF9C8
+}
+div#findPassword{
+	margin-top: 10px;
+	display: none;
+}
+.nav>li>a:focus{
+	background-color:transparent;
+}
+/*登录框*/
+.navbar-header img{
+	margin-right: 10px;
+	margin-top: -10px;
+	height:40px;
+	vertical-align:middle
+}
+.navba
