@@ -39,7 +39,7 @@ public class Register extends ActionSupport {
 			ResultSet rs = stmt.executeQuery(query);
 			if(rs.next()){
 				int id = rs.getInt("id");
-				sql = "insert into driver_info values("+id+",0,0,0,0,0)";
+				sql = "insert into driver_info values("+id+",0,0,0,0,0,0)";
 				stmt.executeUpdate(sql);
 				sql = "update user set driver_info='"+id+"' where phone='"+account+"';";
 				stmt.executeUpdate(sql);

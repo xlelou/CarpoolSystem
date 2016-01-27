@@ -16,7 +16,7 @@
 		<action name="nationpost" class="nationpost" method="post"></action>
 		<action name="readmessage" class="readmessage" method="read"></action>
 		<action name="deletemessage" class="deletemessage" method="delete"></action>
-		<action name="getmessage" class="getmessage" method="get"></action>
+		<action name="recmessage" class="recmessage" method="receive"></action>
 		<action name="sendmessage" class="sendmessage" method="send"></action>
 		<action name="register" class="register" method="register"></action>
 	</package>

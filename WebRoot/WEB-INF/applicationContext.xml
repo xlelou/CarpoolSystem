@@ -96,5 +96,5 @@
 	<bean id="register" class="com.ssh.action.api.Register" scope="prototype"></bean>
 	<bean id="saveinfo" class="com.ssh.action.api.Saveinfo" scope="prototype"></bean>
 	<bean id="sendmessage" class="com.ssh.action.api.SendMessage" scope="prototype"></bean>
-	<bean id="getmessage" class="com.ssh.action.api.GetMessage" scope="prototype"></bean>
+	<bean id="recmessage" class="com.ssh.action.api.RecMessage" scope="prototype"></bean>
 </beans>
