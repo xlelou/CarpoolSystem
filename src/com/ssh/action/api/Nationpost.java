@@ -41,7 +41,7 @@ public class Nationpost extends ActionSupport {
 			sql = "select * from nation where router_id=0";
 			ResultSet rs = stmt.executeQuery(sql);
 			if(rs.next()){
-				sql = "insert into router values("+rs.getInt("id")+",1,'0','0','"+start+"','"+dest+"','0','0','0')";
+				sql = "insert into nationrouter values("+rs.getInt("id")+",'"+start+"','"+dest+"')";
 				stmt.executeUpdate(sql);
 				sql = "update nation set router_id="+rs.getInt("id");
 				stmt.executeUpdate(sql);
@@ -55,7 +55,7 @@ public class Nationpost extends ActionSupport {
 			sql = "select * from nation where router_id=0";
 			ResultSet rs = stmt.executeQuery(sql);
 			if(rs.next()){
-				sql = "insert into router values("+rs.getInt("id")+",2,'0','0','"+start+"','"+dest+"','0','0','0')";
+				sql = "insert into nationrouter values("+rs.getInt("id")+",'"+start+"','"+dest+"')";
 				stmt.executeUpdate(sql);
 				sql = "update nation set router_id="+rs.getInt("id");
 				stmt.executeUpdate(sql);
