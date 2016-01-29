@@ -29,18 +29,23 @@ public class Login extends ActionSupport {
 		String password = (String)dt.get("password");
 		String sql = "select * from user where phone='"+phone+"' && password='"+password+"';";
 		ResultSet rs = stmt.executeQuery(sql);
+		JSONObject json = new JSONObject();
 		if(rs.next()){
+			json.put("result","success");
+			json.put("id",rs.getInt("id"));
+			json.put("account",rs.getString("phone"));
 			stmt.close();
 			conn.close();
 			HttpServletResponse response = ServletActionContext.getResponse();
 			response.setCharacterEncoding("utf-8");
-			response.getWriter().write("success");
+			response.getWriter().write(json.toString());
 		}else{
+			json.put("result","fail");
 			stmt.close();
 			conn.close();
 			HttpServletResponse response = ServletActionContext.getResponse();
 			response.setCharacterEncoding("utf-8");
-			response.getWriter().write("error");
+			response.getWriter().write(json.toString());
 		}
 	}
 	

@@ -29,7 +29,11 @@
 						</a>
 					</li>
 					<li>
-						<a href="javascript:void()" data-toggle="modal" data-target="#LoginModal">登陆</a>
+						<a href="javascript:void()" data-toggle="modal" data-target="#LoginModal" id="loginBtn">登陆</a>
+						<a href="javascript:void()" style="display:none;cursor:default" id="nameBtn"></a>
+					</li>
+					<li style="display:none" id="logoutBtn">
+						<a href="javascript:logout()">退出</a>
 					</li>
 				</ul>
 				</div>	
@@ -67,7 +71,7 @@
 				        </form>
 				        <div class="modal-footer">
 					        <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
-					        <button type="button" class="btn btn-primary">登录</button>
+					        <button type="button" class="btn btn-primary" id="tologin">登录</button>
 					    </div>
 				    </div>
 				    <div role="tabpanel" class="tab-pane fade" id="tab2">
@@ -263,6 +267,7 @@
 		<script type="text/javascript" src="js/jquery.validate.js"></script>
 		<script type="text/javascript" src="js/bootstrap.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/login.js"></script>
 		<script type="text/javascript">
 			$(function(){
 				$('#loginPassword').focus(function(){

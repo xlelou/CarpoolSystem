@@ -185,9 +185,6 @@ td:nth-child(2),th:nth-child(2){
 .info-user-detailDiv p:nth-child(1){
 	font-weight: bold;
 }
-.glyphicon-ok{
-	color: green;
-}
 .glyphicon-remove{
 	color: red;
 }

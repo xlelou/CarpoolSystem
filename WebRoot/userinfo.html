@@ -30,7 +30,11 @@
 						</a>
 					</li>
 					<li>
-						<a href="javascript:void()" data-toggle="modal" data-target="#LoginModal">登录</a>
+						<a href="javascript:void()" data-toggle="modal" data-target="#LoginModal" id="loginBtn">登陆</a>
+						<a href="javascript:void()" style="display:none;cursor:default" id="nameBtn"></a>
+					</li>
+					<li style="display:none" id="logoutBtn">
+						<a href="javascript:logout()">退出</a>
 					</li>
 				</ul>
 				</div>	
@@ -1893,6 +1897,26 @@
 	 	<script type="text/javascript" src="js/highcharts.js"></script>
 	 	<script type="text/javascript" src="js/themes/skies.js"></script>
 	 	<script type="text/javascript" src="js/userinfo.js"></script>
-
+	 	<script type="text/javascript">
+	 		$(function(){
+	 			if(window.sessionStorage){
+					if(sessionStorage.getItem("id")){
+						$("#nameBtn").text("用户"+sessionStorage.getItem("name"));
+						$("#loginBtn").hide();
+						$("#nameBtn").show();
+						$("#logoutBtn").show();
+					}else{
+						location.href="index.html";
+					}
+				}else{
+					alert("this browser does not support sessionStorage");
+					window.close();
+				};
+	 		})
+	 		function logout(){
+				sessionStorage.clear();
+				location.reload();
+			}
+	 	</script>
 	</body>
 </html>
