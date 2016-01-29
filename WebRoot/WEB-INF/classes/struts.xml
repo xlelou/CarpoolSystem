@@ -19,6 +19,9 @@
 		<action name="recmessage" class="recmessage" method="receive"></action>
 		<action name="sendmessage" class="sendmessage" method="send"></action>
 		<action name="register" class="register" method="register"></action>
+		<action name="getownapply" class="getownapply" method="get"></action>
+		<action name="getownpost" class="getownpost" method="get"></action>
+		<action name="getallpost" class="getallpost" method="get"></action>
 	</package>
 </struts> 
  
