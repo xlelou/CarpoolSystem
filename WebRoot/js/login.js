@@ -1,10 +1,19 @@
 $(function(){
-	if(window.sessionStorage){
+	if(window.sessionStorage){//已登录
 		if(sessionStorage.getItem("id")){
 			$("#nameBtn").text("用户"+sessionStorage.getItem("name"));
 			$("#loginBtn").hide();
 			$("#nameBtn").show();
 			$("#logoutBtn").show();
+			$(".postbutton").attr("data-target","#PostModal");
+			$("#toPerson").attr("href","userinfo.html");
+		}else{//未登录
+			$(".postbutton").click(function(){
+				alert("请先登录");
+			});
+			$("#toPerson").click(function(){
+				alert("请先登录");
+			})
 		}
 	}else{
 		alert("this browser does not support sessionStorage");
@@ -31,6 +40,7 @@ $(function(){
 			}
 		})
 	})
+
 })
 function logout(){
 	sessionStorage.clear();

@@ -24,8 +24,8 @@
 						<a href="nationwide.html">全国拼车</a>
 					</li>
 					<li style="margin-right: 150px;">
-						<a href="userinfo.html">个人中心
-							<span class="badge">14</span>
+						<a href="javascript:void()" id="toPerson">个人中心
+							<span class="badge" style="display:none">14</span>
 						</a>
 					</li>
 					<li>
@@ -175,7 +175,7 @@
 		</div>
 		<div class="container-fluid" id="postMenu">
 				<h1>有路的地方就有我们，改变生活方式从出行开始！</h1>
-				<button class="btn postbutton mid" style="width: 20%;height: 50%;" id="activeajax">马上拼车</button>
+				<button class="btn orangeBtn mid" style="width: 20%;height: 50%;" id="toCarpool">马上拼车</button>
 			</ul>
 		</div>
 		<div class="container">
@@ -274,6 +274,9 @@
 					$('#findPassword').fadeToggle('fast');
 				}).blur(function(){
 					$('#findPassword').fadeToggle('fast');
+				});
+				$('#toCarpool').click(function(){
+					location.href="local.html";
 				})
 			})
 			// $().ready(function(){
