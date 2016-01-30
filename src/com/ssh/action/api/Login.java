@@ -34,6 +34,7 @@ public class Login extends ActionSupport {
 			json.put("result","success");
 			json.put("id",rs.getInt("id"));
 			json.put("account",rs.getString("phone"));
+			json.put("type",rs.getInt("id"));
 			stmt.close();
 			conn.close();
 			HttpServletResponse response = ServletActionContext.getResponse();

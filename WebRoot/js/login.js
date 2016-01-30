@@ -5,12 +5,7 @@ $(function(){
 			$("#loginBtn").hide();
 			$("#nameBtn").show();
 			$("#logoutBtn").show();
-			$(".postbutton").attr("data-target","#PostModal");
-			$("#toPerson").attr("href","userinfo.html");
 		}else{//未登录
-			$(".postbutton").click(function(){
-				alert("请先登录");
-			});
 			$("#toPerson").click(function(){
 				alert("请先登录");
 			})
@@ -35,6 +30,45 @@ $(function(){
 				}else{
 					sessionStorage.setItem("id",dt.id);
 					sessionStorage.setItem("name",dt.account);
+					sessionStorage.setItem("type",dt.type);
+					location.reload();
+				}
+			}
+		})
+	});
+	$('#driverRegBtn').click(function(){
+		var x = {};
+		x.account = $("#driRegAccount").val();
+		x.password = $("#driRegPassword").val();
+		x.username = $("#driRegUsername").val();
+		x.id = $("#driRegId").val();
+		x.email = $("#driRegEmail").val();
+		x.type="1";
+		$.ajax({
+			type:"POST",
+			url:"register",
+			data:"dt="+JSON.stringify(x),
+			success:function(msg){
+				if(msg=="success"){
+					alert("注册成功");
+					location.reload();
+				}
+			}
+		})
+	})
+	$('#pasRegBtn').click(function(){
+		var x = {};
+		x.type="2";
+		x.account = $("#pasRegAccount").val();
+		x.password = $("#pasRegPassword").val();
+		x.email = $("#pasRegEmail").val();
+		$.ajax({
+			type:"POST",
+			url:"register",
+			data:"dt="+JSON.stringify(x),
+			success:function(msg){
+				if(msg=="success"){
+					alert("注册成功");
 					location.reload();
 				}
 			}

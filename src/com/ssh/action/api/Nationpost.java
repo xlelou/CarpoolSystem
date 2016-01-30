@@ -38,31 +38,36 @@ public class Nationpost extends ActionSupport {
 			String cartype = (String) dt.get("cartype");
 			String sql = "insert into nation(type,apply_id,router_id,need_count,in_count,apply_count,price,cartype,status,startdate,starttime,viewtime,message) values(1,"+apply_id+",0,"+count+",0,0,'"+price+"','"+cartype+"',1,'"+startdate+"','"+starttime+"',0,'"+message+"')";
 			stmt.executeUpdate(sql);
+			stmt = conn.createStatement();
 			sql = "select * from nation where router_id=0";
 			ResultSet rs = stmt.executeQuery(sql);
 			if(rs.next()){
 				sql = "insert into nationrouter values("+rs.getInt("id")+",'"+start+"','"+dest+"')";
+				stmt = conn.createStatement();
 				stmt.executeUpdate(sql);
-				sql = "update nation set router_id="+rs.getInt("id");
+				stmt = conn.createStatement();
+				sql = "update nation set router_id="+rs.getInt("id")+" where router_id=0";
 				stmt.executeUpdate(sql);
 			}
-			HttpServletResponse response = ServletActionContext.getResponse();
-			response.setCharacterEncoding("utf-8");
-			response.getWriter().write("success");
 		}else if(type==2){//乘客发布
 			String sql = "insert into nation(type,apply_id,router_id,need_count,in_count,apply_count,price,cartype,status,startdate,starttime,viewtime,message) values(2,"+apply_id+",0,"+count+",0,0,'"+price+"','0',1,'"+startdate+"','"+starttime+"',0,'"+message+"')";
+			stmt = conn.createStatement();
 			stmt.executeUpdate(sql);
 			sql = "select * from nation where router_id=0";
 			ResultSet rs = stmt.executeQuery(sql);
 			if(rs.next()){
 				sql = "insert into nationrouter values("+rs.getInt("id")+",'"+start+"','"+dest+"')";
+				stmt = conn.createStatement();
 				stmt.executeUpdate(sql);
-				sql = "update nation set router_id="+rs.getInt("id");
+				stmt = conn.createStatement();
+				sql = "update nation set router_id="+rs.getInt("id")+" where router_id=0";
 				stmt.executeUpdate(sql);
 			}
-			HttpServletResponse response = ServletActionContext.getResponse();
-			response.setCharacterEncoding("utf-8");
-			response.getWriter().write("success");
 		}
+		JSONObject json = new JSONObject();
+		json.put("result","success");
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setCharacterEncoding("utf-8");
+		response.getWriter().write(json.toString());
 	}
 }

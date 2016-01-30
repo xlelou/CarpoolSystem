@@ -25,7 +25,7 @@
 					</li>
 					<li style="margin-right: 150px;">
 						<a href="javascript:void()" id="toPerson">个人中心
-							<span class="badge">14</span>
+							<span class="badge" style="display:none">14</span>
 						</a>
 					</li>
 					<li>
@@ -177,11 +177,12 @@
 							    	<div class="col-md-3">
 							      		<input type="text" class="form-control" id="driPostStartDate" name="driPostStartDate">
 							    	</div>
-							    	<div class="col-md-3">
-							      		<select class="form-control">
-							      			<option>1</option>
-							      			<option>2</option>
-							      			<option>3</option>
+							    	<div class="col-md-5">
+							      		<select class="form-control" id="driPostStartTime">
+							      			<option>早上(6:00-11:00)</option>
+							      			<option>中午(11:00-13:00)</option>
+							      			<option>下午(13:00-18:00)</option>
+							      			<option>晚上(18:00-22:00)</option>
 							      		</select>
 							    	</div>
 							  	</div>
@@ -231,7 +232,7 @@
                                 <div class="form-group">
                                     <label class="col-md-2 control-label">说明 ：</label>
                                     <div class="col-md-9">
-                                         <textarea class="form-control" rows="5"></textarea>
+                                         <textarea class="form-control" rows="5" id="driPostMessage"></textarea>
                                     </div>
                                 </div>
 						    </div>
@@ -251,11 +252,12 @@
 							    	<div class="col-md-3">
 							      		<input type="text" class="form-control" id="pasPostStartDate" name="pasPostStartDate">
 							    	</div>
-							    	<div class="col-md-3">
-							      		<select class="form-control">
-							      			<option>1</option>
-							      			<option>2</option>
-							      			<option>3</option>
+							    	<div class="col-md-5">
+							      		<select class="form-control" id="pasPostStartTime">
+							      			<option>早上(6:00-11:00)</option>
+							      			<option>中午(11:00-13:00)</option>
+							      			<option>下午(13:00-18:00)</option>
+							      			<option>晚上(18:00-22:00)</option>
 							      		</select>
 							    	</div>
 							  	</div>
@@ -282,7 +284,7 @@
                                 <div class="form-group">
                                     <label class="col-md-2 control-label">说明 ：</label>
                                     <div class="col-md-9">
-                                         <textarea class="form-control" rows="5"></textarea>
+                                         <textarea class="form-control" rows="5" id="pasPostMessage"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -290,7 +292,7 @@
 					</div>
 			      </div>
 			      <div class="modal-footer">
-			        <button type="button" class="btn btn-primary">立即发布</button>
+			        <button type="button" class="btn btn-primary" id="toPost">立即发布</button>
 			      </div>
 			    </div>
 			  </div>
@@ -322,7 +324,7 @@
 						</ul>
 					</div>
 					<div class="col-md-4" style="position: relative;">
-						<button class="btn btn-lg postbutton big" data-toggle="modal">我要发布拼车信息</button>
+						<button class="btn btn-lg nationpostbutton big" data-toggle="modal">我要发布拼车信息</button>
 					</div>
 					<div class="col-md-12" style="text-align:center">
 						<ul class="list-inline">
@@ -586,12 +588,7 @@
 			map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);    
 			map.addControl(new BMap.NavigationControl());
 			map.enableScrollWheelZoom();
-		$(function(){
-		    $("#searchDate").datepicker({
-	      		showAnim:"slide",
-	      		dateFormat:"yy-mm-dd"
-		    });
-		});
+		
 		$(function(){
 				$('#loginPassword').focus(function(){
 					$('#findPassword').fadeToggle('fast');

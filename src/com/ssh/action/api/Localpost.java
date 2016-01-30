@@ -40,16 +40,20 @@ public class Localpost extends ActionSupport {
 		String passby3 = (String)dt.get("passby3");
 		String sql ="insert into local(driver_id,router_id,need_count,in_count,apply_count,price,cartype,status,startdate,starttime,viewtime,message) values("+driverid+",0,"+need_count+",0,0,'"+price+"','"+cartype+"',1,'"+startdate+"','"+starttime+"',0,'"+message+"')";
 		stmt.executeUpdate(sql);
+		stmt = conn.createStatement();
 		sql = "select * from local where router_id=0";
 		ResultSet rs = stmt.executeQuery(sql);
 		if(rs.next()){
 			sql = "insert into localrouter values("+rs.getInt("id")+",'"+start+"','"+dest+"','"+city+"','"+passby1+"','"+passby2+"','"+passby3+"')";
+			stmt = conn.createStatement();
 			stmt.executeUpdate(sql);
 			sql = "update local set router_id="+rs.getInt("id")+" where router_id=0";
 			stmt.executeUpdate(sql);
 		}
+		JSONObject json = new JSONObject();
+		json.put("result","success");
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setCharacterEncoding("utf-8");
-		response.getWriter().write("success");
+		response.getWriter().write(json.toString());
 	}
 }

@@ -173,7 +173,7 @@
 								<button class="btn btn-primary" data-toggle="modal" data-target="#ChangeCityModal">切换城市</button>
 							</li>
 							<li style="width: 33%;">
-								<button class="btn postbutton" data-toggle="modal">我要发布拼车信息</button>
+								<button class="btn localpostbutton" data-toggle="modal">我要发布拼车信息</button>
 							</li>
 							<li style="width: 25%;">
 								<button class="btn btn-primary">搜索</button>
@@ -432,18 +432,49 @@
                          <label>出发时间</label>
                     </div>
                     <div class="col-md-3">
-                        <select class="form-control">
+                        <select class="form-control"  id="driPostDate">
                             <option>工作日</option>
+                            <option>每天</option>
+                            <option>周末</option>
+                            <option>其它</option>
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <select class="form-control">
-                            <option>工作日</option>
+                        <select class="form-control"  id="driPostHour">
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                            <option>11</option>
+                            <option>12</option>
+                            <option>13</option>
+                            <option>14</option>
+                            <option>15</option>
+                            <option>16</option>
+                            <option>17</option>
+                            <option>18</option>
+                            <option>19</option>
+                            <option>20</option>
+                            <option>21</option>
+                            <option>22</option>
+                            <option>23</option>
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <select class="form-control">
-                            <option>工作日</option>
+                        <select class="form-control" id="driPostMinute">
+                            <option>00</option>
+                            <option>10</option>
+                            <option>20</option>
+                            <option>30</option>
+                            <option>40</option>
+                            <option>50</option>
                         </select>
                     </div>
                 </div>
@@ -452,8 +483,11 @@
                          <label>车型</label>
                     </div>
                     <div class="col-md-5">
-                        <select class="form-control">
+                        <select class="form-control" id="driPostCartype">
                             <option>轿车</option>
+                            <option>SUV</option>
+                            <option>客车</option>
+                            <option>其它</option>
                         </select>
                     </div>
                 </div>
@@ -476,12 +510,12 @@
                          <label>说明</label>
                     </div>
                     <div class="col-md-9">
-                        <textarea style="width:100%" rows="5"></textarea>
+                        <textarea style="width:100%" rows="5" id="driPostMessage"></textarea>
                     </div>
                 </div>
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-primary">立即发布</button>
+		        <button type="button" class="btn btn-primary" id="toPost">立即发布</button>
 		      </div>
 		    </div>
 		  </div>

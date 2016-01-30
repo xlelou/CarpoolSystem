@@ -72,7 +72,7 @@ img{
 #menulist li button{
 	width: 100%;
 }
-.postbutton{
+.localpostbutton{
 	background: orangered;
 	color: white;
 	font-weight: bold;
@@ -254,6 +254,7 @@ p.small img{
 }
 ul.nav-tabs li{
 	width: 20%;
+	text-align: center;
 }
 #innerMap{
     float: right;
