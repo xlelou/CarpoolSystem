@@ -1,13 +1,57 @@
 $(function(){
-	if(window.sessionStorage){
-		if(sessionStorage.getItem("type")){
-			$("#toPerson").attr("href","userinfo.html");
-			$(".nationpostbutton").attr("data-target","#PostModal");
-		}else{
-			$(".nationpostbutton").click(function(){
-				alert("请先登录");
-			})
+	$.ajax({
+		type:"POST",
+		url:"getallpost",
+		data:"dt="+JSON.stringify({"type":"2"}),
+		success:function(dt){
+			dt = eval('('+dt+')');
+			var tb = document.getElementById("tbody");
+			for(var count=dt.detail.length-1;count>-1;count--){
+				var tr = document.createElement("tr");
+				var td = document.createElement("td");
+				if(dt.detail[count].type=="1"){
+					td.innerHTML = "拼车";
+				}else{
+					td.innerHTML = "求拼";
+				}
+				tr.appendChild(td);
+				td = document.createElement("td");
+				td.innerHTML = dt.detail[count].startdate;
+				tr.appendChild(td);
+				td = document.createElement("td");
+				if(dt.detail[count].price=="面议"){
+					td.innerHTML = dt.detail[count].price;
+				}else{
+					td.innerHTML = dt.detail[count].price+"/人";
+				}
+				tr.appendChild(td);
+				td = document.createElement("td");
+				if(dt.detail[count].cartype=="0"){
+					td.innerHTML = "-";
+				}else{
+					td.innerHTML = dt.detail[count].cartype;
+				}
+				tr.appendChild(td);
+				td = document.createElement("td");
+				td.innerHTML = dt.detail[count].start;
+				tr.appendChild(td);
+				td = document.createElement("td");
+				td.innerHTML = dt.detail[count].dest;
+				tr.appendChild(td);
+				td = document.createElement("td");
+				td.innerHTML = "<a href='nationwideDetail.html?id="+dt.detail[count].id+"'>申请加入</a>";
+				tr.appendChild(td);
+				tb.appendChild(tr);
+			}	
 		}
+	})
+	if(sessionStorage.getItem("type")){
+		$("#toPerson").attr("href","userinfo.html");
+		$(".nationpostbutton").attr("data-target","#PostModal");
+	}else{
+		$(".nationpostbutton").click(function(){
+			alert("请先登录");
+		})
 	}
 	$("#searchDate").datepicker({
   		showAnim:"slide",

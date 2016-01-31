@@ -1,6 +1,9 @@
 $(function(){
-	if(window.sessionStorage){//已登录
-		if(sessionStorage.getItem("id")){
+	if(window.sessionStorage){
+		if(sessionStorage.getItem("city")==null){
+			sessionStorage.setItem("city","广州");
+		}
+		if(sessionStorage.getItem("id")){//已登录
 			$("#nameBtn").text("用户"+sessionStorage.getItem("name"));
 			$("#loginBtn").hide();
 			$("#nameBtn").show();
@@ -14,6 +17,11 @@ $(function(){
 		alert("this browser does not support sessionStorage");
 		window.close();
 	};
+	$('#loginPassword').focus(function(){
+		$('#findPassword').fadeToggle('fast');
+	}).blur(function(){
+		$('#findPassword').fadeToggle('fast');
+	});
 	$("#tologin").click(function(){
 		var dt = {};
 		dt.phone = $("#loginAccount").val();

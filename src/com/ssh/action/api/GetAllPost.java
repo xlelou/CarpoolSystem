@@ -38,9 +38,10 @@ public class GetAllPost extends ActionSupport {
 			while(trips.next()){
 				JSONObject trip = new JSONObject();
 				sql = "select * from localrouter where id="+trips.getInt("router_id");
+				stmt = conn.createStatement();
 				ResultSet router = stmt.executeQuery(sql);
 				if(router.next()){
-					if(router.getString("city")==city){
+					if(router.getString("city").equals(city)){
 						trip.put("id",trips.getInt("id"));
 						trip.put("startdate",trips.getString("startdate"));
 						trip.put("starttime",trips.getString("starttime"));
@@ -50,9 +51,9 @@ public class GetAllPost extends ActionSupport {
 						trip.put("status",trips.getInt("status"));
 						trip.put("start",router.getString("start"));
 						trip.put("dest",router.getString("dest"));
+						record.add(trip);
 					}
 				}
-				record.add(trip);
 			}
 		}else if(type==2){
 			String sql = "select * from nation";
@@ -60,20 +61,22 @@ public class GetAllPost extends ActionSupport {
 			while(trips.next()){
 				JSONObject trip = new JSONObject();
 				sql = "select * from nationrouter where id="+trips.getInt("router_id");
+				stmt = conn.createStatement();
 				ResultSet router = stmt.executeQuery(sql);
 				if(router.next()){
 					trip.put("id",trips.getInt("id"));
 					trip.put("type",trips.getInt("type"));
 					trip.put("startdate",trips.getString("startdate"));
 					trip.put("starttime",trips.getString("starttime"));
+					trip.put("cartype",trips.getString("cartype"));
 					trip.put("price",trips.getString("price"));
 					trip.put("in_count",trips.getInt("in_count"));
 					trip.put("need_count",trips.getInt("need_count"));
 					trip.put("status",trips.getInt("status"));
 					trip.put("start",router.getString("start"));
 					trip.put("dest",router.getString("dest"));
+					record.add(trip);
 				}
-				record.add(trip);
 			}
 		}
 		json.put("detail",record);

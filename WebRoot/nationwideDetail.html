@@ -390,11 +390,78 @@
                             </p>
                             <p>
                                 <span class="smallGrey">出发时间 ：</span>
-                                <span id="dtStartDate">2016-01-22</span>
-                                <span id="dtStartTime">早上(6:00-11:00)</span>
+                                <span id="dtStartdate">2016-01-22</span>
+                                <span id="dtStarttime">早上(6:00-11:00)</span>
                             </p>
                         </div>
-                        <div class="col-md-12 nopadding pd20">
+                        <div class="col-md-12 nopadding pd20" id="type1div">
+                            <div class="col-md-4">
+                                <span class="smallGrey">总里程约 ：</span>
+                                <span id="dtDistance">982.8公里</span>
+                            </div>
+                            <div class="col-md-4">
+                                <span class="smallGrey">汽油费约 ：</span>
+                                <span id="dtFuelprice">624元</span>
+                            </div>
+                            <div class="col-md-4">
+                                <span class="smallGrey">路桥费约 ：</span>
+                                <span id="dtTax">385元</span>
+                            </div>
+                            <div class="col-md-4">
+                                <span class="smallGrey">可容纳人数 ：</span>
+                                <span id="dtdriPeople">4人</span>
+                            </div>
+                            <div class="col-md-4">
+                                <span class="smallGrey">已报名人数 ：</span>
+                                <span id="dtdriPeopleapplied">1人</span>
+                            </div>
+                            <div class="col-md-4">
+                                已有<span id="dtdriPeopleapply">0</span>人申请加入此拼车
+                            </div>
+                            <div class="col-md-4">
+                                <span class="smallGrey">汽车类型 ：</span>
+                                <span id="dtdriCartype">轿车</span>
+                            </div>
+                            <div class="col-md-4">
+                                <span class="smallGrey">费用方式 ：</span>
+                                <span id="dtdriPaytype">面议</span>
+                            </div>
+                            <div class="col-md-12">
+                                <span class="smallGrey">车主留言 ：</span>
+                            </div>
+                            <div class="col-md-12" style="padding:0px 20px">
+                                <span id="dtdriMessage">
+                                    补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充
+                                </span>
+                            </div>
+                            <div class="col-md-12 pd10">
+                                <button class="btn btn-primary btn-sm" id="pastoapply">申请加入</button>
+                                <button class="btn btn-primary btn-sm" id="pasgetphone">获取车主联系手机</button>
+                            </div>
+                            <div class="col-md-12" id="dtDriverDetail">
+                                <div class="col-md-6">
+                                    <span>发布用户 ：</span>
+                                    <span id="dtdriName">黄师傅</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <span>认证情况 ：</span>
+                                    <span id="dtdriValidate">实名认证</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <span>诚信指数 ：</span>
+                                    <span id="dtdriCredit">高</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <span>发布编号 ：</span>
+                                    <span id="dtdriId">110</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <span>浏览次数</span>
+                                    <span id="dtdriViewtime">23次</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 nopadding pd20" id="type2div" style="display:none">
                             <div class="col-md-4">
                                 <span class="smallGrey">总里程约 ：</span>
                                 <span id="dtDistance">982.8公里</span>
@@ -408,64 +475,45 @@
                                 <span id="dtTax">385元</span>
                             </div>
                             <div class="col-md-4">
-                                <span class="smallGrey">可容纳人数 ：</span>
-                                <span id="dtPeople">4人</span>
-                            </div>
-                            <div class="col-md-4">
-                                <span class="smallGrey">已报名人数 ：</span>
-                                <span id="dtPeopleApply">1人</span>
-                            </div>
-                            <div class="col-md-4">
-                                已有<span id="dtPeopleApplied">0</span>人申请加入此拼车
-                            </div>
-                            <div class="col-md-4">
-                                <span class="smallGrey">汽车类型 ：</span>
-                                <span id="dtCarType">轿车</span>
+                                <span class="smallGrey">参加人数 ：</span>
+                                <span id="dtpasPeople">4人</span>
                             </div>
                             <div class="col-md-4">
                                 <span class="smallGrey">费用方式 ：</span>
-                                <span id="dtPayType">面议</span>
-                            </div>
-                            <div class="col-md-4 passengerDiv">
-                                已有<span id="dtPeopleInvite">3</span>人邀请该乘客
+                                <span id="dtpasPayType">面议</span>
                             </div>
                             <div class="col-md-12">
-                                <span class="smallGrey">车主留言 ：</span>
+                                <span class="smallGrey">乘客留言 ：</span>
                             </div>
                             <div class="col-md-12" style="padding:0px 20px">
-                                <span id="dtMessage">
+                                <span id="dtpasMessage">
                                     补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充
                                 </span>
                             </div>
                             <div class="col-md-12 pd10">
-                                <button class="btn btn-primary btn-sm">申请加入</button>
-                                <button class="btn btn-primary btn-sm">获取车主联系手机</button>
+                                <button class="btn btn-primary btn-sm" id="dritoapply">邀请加入</button>
+                                <button class="btn btn-primary btn-sm" id="drigetphone">获取乘客联系手机</button>
                             </div>
                             <div class="col-md-12" id="dtDriverDetail">
                                 <div class="col-md-6">
                                     <span>发布用户 ：</span>
-                                    <span id="dtDriverName">黄师傅</span>
+                                    <span id="dtpasName">黄师傅</span>
                                 </div>
                                 <div class="col-md-6">
                                     <span>认证情况 ：</span>
-                                    <span id="dtDriverValidate">黄师傅</span>
+                                    <span id="dtpasValidate">邮箱认证</span>
                                 </div>
                                 <div class="col-md-6">
                                     <span>诚信指数 ：</span>
-                                    <span id="dtDriverCredit">高</span>
+                                    <span id="dtpasCredit">中</span>
                                 </div>
                                 <div class="col-md-6">
-                                    <span>拼车编号 ：</span>
-                                    <span id="dtCode">110</span>
-                                </div>
-                                <div class="col-md-6">
-                                    <span>发布时间 ：</span>
-                                    <span id="dtPostDate">2016-01-05</span>
-                                    <span id="dtPostTime">17:30</span>
+                                    <span>发布编号 ：</span>
+                                    <span id="dtpasCode">110</span>
                                 </div>
                                 <div class="col-md-6">
                                     <span>浏览次数</span>
-                                    <span id="dtViewTime">23次</span>
+                                    <span id="dtpasViewtime">23次</span>
                                 </div>
                             </div>
                         </div>
@@ -507,7 +555,7 @@
 		<script type="text/javascript" src="js/jquery.validate.js"></script>
 	 	<script type="text/javascript" src="js/bootstrap.js"></script>
 		<script type="text/javascript" src="js/jquery-ui.js"></script>
-		<script type="text/javascript" src="js/nationwide.js"></script>
+		<script type="text/javascript" src="js/nationdetail.js"></script>
 		<script type="text/javascript" src="js/login.js"></script>
 		<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
 		<script>
