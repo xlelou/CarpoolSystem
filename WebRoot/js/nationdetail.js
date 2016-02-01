@@ -40,6 +40,88 @@ $(function(){
 				$("#dtdriMessage").text(dt.detail.message);
 				$("#dtdriName").text(dt.poster.name.slice(0,1)+"师傅");
 				$("#dtdriId").text(dt.poster.id);
+				if(sessionStorage.getItem("id")){
+					if(sessionStorage.getItem("id")==dt.poster.id){
+						$("#pastoapply").hide();
+						if(dt.detail.need_count==dt.detail.in_count){
+							$("#dritoactive").show();
+							$("#dritoactive").click(function(){
+								var active = {};
+								active.trip_type = "2";
+								active.type = "3";
+								active.trip_id = GetQueryString("id");
+								$.ajax({
+									type:"POST",
+									url:"drivercontrol",
+									data:"dt="+JSON.stringify(active),
+									success:function(dt){
+										dt = eval('('+dt+')');
+										if(dt.result=="success"){
+											alert("发起成功");
+											location.reload();
+										}
+									}
+								})
+							})
+						}
+						var getapply = {};
+						getapply.type = "2";
+						getapply.trip_id = GetQueryString("id");
+						$.ajax({
+							type:"POST",
+							url:"getapply",
+							data:"dt="+JSON.stringify(getapply),
+							success:function(dt){
+								dt = eval('('+dt+')');
+								for(var x=0;x<dt.applying.length;x++){
+									$("<tr><td>"+dt.applying[x]+"</td><td><button class='btn btn-warning'>加入</button></td></tr>").appendTo($("#applyinglist").find("tbody"));
+								}
+								for(var x=0;x<dt.applied.length;x++){
+									$("<tr><td>"+dt.applied[x]+"</td><td><button class='btn btn-primary'>踢出</button></td></tr>").appendTo($("#appliedlist").find("tbody"));
+								}
+								$("#appliedlist").find("button").click(function(){
+									var post = {};
+									post.trip_type = "2";
+									post.type = "2";
+									post.trip_id = GetQueryString("id");
+									post.id = $(this).parent().parent().find("td:first-child").text();
+									$.ajax({
+										type:"POST",
+										url:"drivercontrol",
+										data:"dt="+JSON.stringify(post),
+										success:function(dt){
+											dt = eval('('+dt+')');
+											if(dt.result=="success"){
+												alert("踢出成功!");
+												location.reload();
+											}
+										}
+									})
+								})
+								$("#applyinglist").find("button").click(function(){
+									var post = {};
+									post.trip_type = "2";
+									post.type = "1";
+									post.trip_id = GetQueryString("id");
+									post.id = $(this).parent().parent().find("td:first-child").text();
+									$.ajax({
+										type:"POST",
+										url:"drivercontrol",
+										data:"dt="+JSON.stringify(post),
+										success:function(dt){
+											dt = eval('('+dt+')');
+											if(dt.result=="success"){
+												alert("加入成功!");
+												location.reload();
+											}
+										}
+									})
+								})
+							}
+						})
+						$("#applylist").show();
+					}
+				}
 				$("#dtdriViewtime").text(dt.detail.viewtime+"次");
 			}else if(dt.detail.type=="2"){
 				sessionStorage.setItem("triptype","2");

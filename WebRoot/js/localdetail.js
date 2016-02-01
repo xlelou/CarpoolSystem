@@ -47,6 +47,90 @@ $(function(){
 			$("#dtMessage").text(dt.detail.message);
 			$("#dtName").text(dt.poster.name.slice(0,1)+"师傅");
 			$("#dtId").text(dt.poster.id);
+			if(sessionStorage.getItem("id")){
+				if(sessionStorage.getItem("id")==dt.poster.id){
+					//显示发起
+					$("#pastoapply").hide();
+					if(dt.detail.need_count==dt.detail.in_count){
+						$("#dritoactive").show();
+						$("#dritoactive").click(function(){
+							var active = {};
+							active.trip_type = "1";
+							active.type = "3";
+							active.trip_id = GetQueryString("id");
+							$.ajax({
+								type:"POST",
+								url:"drivercontrol",
+								data:"dt="+JSON.stringify(active),
+								success:function(dt){
+									dt = eval('('+dt+')');
+									if(dt.result=="success"){
+										alert("发起成功");
+										location.reload();
+									}
+								}
+							})
+						})
+					}
+					//显示加入情况
+					var getapply = {};
+					getapply.type = "1";
+					getapply.trip_id = GetQueryString("id");
+					$.ajax({
+						type:"POST",
+						url:"getapply",
+						data:"dt="+JSON.stringify(getapply),
+						success:function(dt){
+							dt = eval('('+dt+')');
+							for(var x=0;x<dt.applying.length;x++){
+								$("<tr><td>"+dt.applying[x]+"</td><td><button class='btn btn-warning'>加入</button></td></tr>").appendTo($("#applyinglist").find("tbody"));
+							}
+							for(var x=0;x<dt.applied.length;x++){
+								$("<tr><td>"+dt.applied[x]+"</td><td><button class='btn btn-primary'>踢出</button></td></tr>").appendTo($("#appliedlist").find("tbody"));
+							}
+							$("#appliedlist").find("button").click(function(){
+								var post = {};
+								post.trip_type = "1";
+								post.type = "2";
+								post.trip_id = GetQueryString("id");
+								post.id = $(this).parent().parent().find("td:first-child").text();
+								$.ajax({
+									type:"POST",
+									url:"drivercontrol",
+									data:"dt="+JSON.stringify(post),
+									success:function(dt){
+										dt = eval('('+dt+')');
+										if(dt.result=="success"){
+											alert("踢出成功!");
+											location.reload();
+										}
+									}
+								})
+							})
+							$("#applyinglist").find("button").click(function(){
+								var post = {};
+								post.trip_type = "1";
+								post.type = "1";
+								post.trip_id = GetQueryString("id");
+								post.id = $(this).parent().parent().find("td:first-child").text();
+								$.ajax({
+									type:"POST",
+									url:"drivercontrol",
+									data:"dt="+JSON.stringify(post),
+									success:function(dt){
+										dt = eval('('+dt+')');
+										if(dt.result=="success"){
+											alert("加入成功!");
+											location.reload();
+										}
+									}
+								})
+							})
+						}
+					})
+					$("#applylist").show();
+				}
+			}
 			$("#dtViewtime").text(dt.detail.viewtime+"次");
 			phone = dt.poster.phone;
 		}
