@@ -4,6 +4,7 @@ function GetQueryString(name){
  	if(r!=null)return  unescape(r[2]); return null;
 };
 $(function(){
+	//初始化
 	var phone;
 	var x = {};
 	x.trip_id = GetQueryString("id");
@@ -41,6 +42,7 @@ $(function(){
 				$("#dtStatus").text("有效");
 			}else{
 				$("#dtStatus").text("过期");
+				$("#pastoapply").hide();
 			}
 			$("#dtMessage").text(dt.detail.message);
 			$("#dtName").text(dt.poster.name.slice(0,1)+"师傅");
@@ -49,4 +51,84 @@ $(function(){
 			phone = dt.poster.phone;
 		}
 	})
+	//检测是否加入过
+	if(sessionStorage.getItem("id")){
+		$("#pasgetphone").click(function(){
+			alert(phone);
+		})
+		if(sessionStorage.getItem("type")=="1"){
+			$("#pastoapply").click(function(){
+				alert("只有乘客才能申请")
+			})
+		}
+		var check = {};
+		check.apply_id = sessionStorage.getItem("id");
+		check.trip_id = GetQueryString("id");
+		check.type = "1";
+		$.ajax({
+			type:"POST",
+			url:"checkapply",
+			data:"dt="+JSON.stringify(check),
+			success:function(dt){
+				dt = eval('('+dt+')');
+				if(dt.result=="applied"){//申请过
+					if(sessionStorage.getItem("type")=="2"){
+						$("#pastoapply").text("取消申请");
+						$("#pastoapply").click(function(){
+							var x = {} ;
+							x.trip_id = GetQueryString("id");
+							x.apply_id = sessionStorage.getItem("id");
+							x.type = "3";
+							$.ajax({
+								type:"POST",
+								url:"applycarpool",
+								data:"dt="+JSON.stringify(x),
+								success:function(dt){
+									dt = eval('('+dt+')');
+									if(dt.result=="success"){
+										alert("取消成功");
+										location.reload();
+									}else{
+										alert("取消失败,请重试");
+										location.reload();
+									}
+								}
+							})
+						})
+					}
+				}else{
+					if(sessionStorage.getItem("type")=="2"){
+						$("#pastoapply").click(function(){
+							var x = {} ;
+							x.trip_id = GetQueryString("id");
+							x.apply_id = sessionStorage.getItem("id");
+							x.type = "1";
+							$.ajax({
+								type:"POST",
+								url:"applycarpool",
+								data:"dt="+JSON.stringify(x),
+								success:function(dt){
+									dt = eval('('+dt+')');
+									if(dt.result=="success"){
+										alert("申请成功");
+										location.reload();
+									}else{
+										alert("申请失败,请重试");
+										location.reload();
+									}
+								}
+							})
+						})
+					}
+				}
+			}
+		})
+	}else{
+		$("#pastoapply").click(function(){
+			alert("请先登录")
+		})
+		$("#pasgetphone").click(function(){
+			alert("请先登录")
+		})
+	}
 })

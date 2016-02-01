@@ -22,6 +22,9 @@
 		<action name="getownapply" class="getownapply" method="get"></action>
 		<action name="getownpost" class="getownpost" method="get"></action>
 		<action name="getallpost" class="getallpost" method="get"></action>
+		<action name="checkapply" class="checkapply" method="check"></action>
+		<action name="drivercontrol" class="drivercontrol" method="control"></action>
+		<action name="getapply" class="getapply" method="get"></action>
 	</package>
 </struts> 
  

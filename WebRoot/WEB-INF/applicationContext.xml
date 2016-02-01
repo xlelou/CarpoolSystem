@@ -100,4 +100,7 @@
 	<bean id="getownapply" class="com.ssh.action.api.GetOwnApply" scope="prototype"></bean>
 	<bean id="getownpost" class="com.ssh.action.api.GetOwnPost" scope="prototype"></bean>
 	<bean id="getallpost" class="com.ssh.action.api.GetAllPost" scope="prototype"></bean>
+	<bean id="checkapply" class="com.ssh.action.api.CheckApply" scope="prototype"></bean>
+	<bean id="drivercontrol" class="com.ssh.action.api.DriverControl" scope="prototype"></bean>
+	<bean id="getapply" class="com.ssh.action.api.GetApply" scope="prototype"></bean>
  </beans>

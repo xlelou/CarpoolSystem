@@ -201,8 +201,8 @@
                          </div>
                          <div class="col-md-4 mid pd20">
                              <p>已有<span id="dtApplyCount">0</span>人申请加入此拼车</p>
-                             <button class="btn btn-primary btn-sm">申请加入</button>
-                             <button class="btn btn-primary btn-sm">获得车主联系方式</button> 
+                             <button class="btn btn-primary btn-sm" id="pastoapply">申请加入</button>
+                             <button class="btn btn-primary btn-sm" id="pasgetphone">获得车主联系方式</button> 
                          </div>
 					</div>
                     <div class="col-md-12 pd20" style="border:none">
@@ -241,9 +241,52 @@
                         <div class="col-md-12" style="margin-bottom:10px">
                             <span class="smallGray">补充说明 ：</span>
                         </div>
-                        <div class="col-md-11 mrlb20">
+                        <div class="col-md-12 mrlb20">
                               <span id="dtMessage">补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明</span>
                         </div>
+                        <div class="col-md-12 pd10" id="applylist" style="display:none">
+                            	<span class="smallGray" style="display:block;width:100%;">申请状况 ：</span>
+                            	<div class="col-md-6">
+                            		<table class="table table-hover" id="appliedlist">
+                            			<thead>
+                            				<tr>
+                            					<th>已加入ID</th>
+                            					<th>操作</th>
+                            				</tr>
+                            			</thead>
+                            			<tbody>
+                            				<tr>
+                            					<td>3</td>
+                            					<td><button class="btn btn-primary">踢出</button></td>
+                            				</tr>
+                            			</tbody>
+                            		</table>
+                            	</div>
+                            	<div class="col-md-6">
+                            		<table class="table table-hover" id="applyinglist">
+                            			<thead>
+                            				<tr>
+                            					<th>申请人ID</th>
+                            					<th>操作</th>
+                            				</tr>
+                            			</thead>
+                            			<tbody>
+                            				<tr>
+                            					<td>4</td>
+                            					<td><button class="btn btn-warning">加入</button></td>
+                            				</tr>
+                            				<tr>
+                            					<td>5</td>
+                            					<td><button class="btn btn-warning">加入</button></td>
+                            				</tr>
+                            				<tr>
+                            					<td>6</td>
+                            					<td><button class="btn btn-warning">加入</button></td>
+                            				</tr>
+                            			</tbody>
+                            		</table>
+                            	</div>
+                            </div>
                         <div class="col-md-12" id="dtDriverDetail">
                             <div class="col-md-4">
                                 <span>发布用户 ：</span>
