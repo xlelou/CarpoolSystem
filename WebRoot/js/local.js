@@ -1,7 +1,6 @@
 $(function(){
 	if(window.sessionStorage){
-		if(sessionStorage.getItem("type")){
-			$("#toPerson").attr("href","userinfo.html");
+		if(sessionStorage.getItem("type")){//已登录
 			if(sessionStorage.getItem("type")=="1"){
 				$(".localpostbutton").attr("data-target","#PostModal");
 			}else{
@@ -15,6 +14,7 @@ $(function(){
 			})
 		}
 	}
+	//发布拼车
 	$("#toPost").click(function(){
 		var dt = {};
 		dt.city = sessionStorage.getItem("city");
@@ -45,6 +45,7 @@ $(function(){
 			}
 		})
 	})
+	//获取拼车
 	var x = {};
 	x.type = "1";
 	x.city = sessionStorage.getItem("city");

@@ -25,7 +25,7 @@ public class Getinfo extends ActionSupport {
 		Statement stmt=conn.createStatement();
 		HttpServletRequest request = ServletActionContext.getRequest();
 		JSONObject dt = JSONObject.parseObject(request.getParameter("dt"));
-		String account = (String) dt.get("acccount");
+		String account = (String) dt.get("account");
 		String sql = "select * from user where phone='"+account+"'";
 		ResultSet userinfo = stmt.executeQuery(sql);
 		JSONObject json = new JSONObject();
@@ -38,6 +38,7 @@ public class Getinfo extends ActionSupport {
 				info.put("name",userinfo.getString("name"));
 				info.put("type",userinfo.getInt("type"));
 				sql = "select * from driver_info where id="+userinfo.getInt("id");
+				stmt = conn.createStatement();
 				ResultSet driverinfo = stmt.executeQuery(sql);
 				if(driverinfo.next()){
 					info.put("success_count",driverinfo.getInt("success_count"));
@@ -48,13 +49,14 @@ public class Getinfo extends ActionSupport {
 				json.put("info",info);
 				HttpServletResponse response = ServletActionContext.getResponse();
 				response.setCharacterEncoding("utf-8");
-				response.getWriter().write(userinfo.toString());
+				response.getWriter().write(json.toString());
 			}else if(userinfo.getInt("type")==2){//passenger
 				info.put("id",userinfo.getInt("id"));
 				info.put("phone",userinfo.getString("phone"));
 				info.put("email",userinfo.getString("email"));
 				info.put("type",userinfo.getString("type"));
 				sql = "select * from passenger_info where id="+userinfo.getInt("id");
+				stmt = conn.createStatement();
 				ResultSet passengerinfo = stmt.executeQuery(sql);
 				if(passengerinfo.next()){
 					info.put("take_count",passengerinfo.getInt("take_count"));
@@ -63,7 +65,7 @@ public class Getinfo extends ActionSupport {
 				json.put("info",info);
 				HttpServletResponse response = ServletActionContext.getResponse();
 				response.setCharacterEncoding("utf-8");
-				response.getWriter().write(userinfo.toString());
+				response.getWriter().write(json.toString());
 			}
 			
 		}

@@ -140,7 +140,7 @@ $(function(){
 			}
 		}
 	})
-	//绑定
+	//绑定按钮事件
 	if(sessionStorage.getItem("type")){
 		$("#pasgetphone").click(function(){
 			alert(posterphone);

@@ -174,7 +174,19 @@
 							<img src="image/user.png" style="height:40px">下午好，亲爱的拼友！
 						</div>
 						<div class="panel-body">
-							<div class="col-md-3 info-user-detailDiv">
+							<div class="col-md-3 info-user-detailDiv" id="pasvali" style="display:none">
+								<p>认证状况</p>
+								<p class="small">
+								手机认证:<span class="glyphicon glyphicon-ok"></span>
+								</p>
+								<p class="small">
+								实名认证:<span class="glyphicon glyphicon-remove"></span>
+								</p>
+								<p class="small">
+								邮箱认证:<span class="glyphicon glyphicon-ok"></span>
+								</p>
+							</div>
+							<div class="col-md-3 info-user-detailDiv" id="drivali" style="display:none">
 								<p>认证状况</p>
 								<p class="small">
 								手机认证:<span class="glyphicon glyphicon-ok"></span>
@@ -183,23 +195,23 @@
 								实名认证:<span class="glyphicon glyphicon-ok"></span>
 								</p>
 								<p class="small">
-								邮箱认证:<span class="glyphicon glyphicon-remove"></span>
+								邮箱认证:<span class="glyphicon glyphicon-ok"></span>
 								</p>
 							</div>
-							<div class="col-md-4 info-user-detailDiv">
+							<div class="col-md-4 info-user-detailDiv" id="dridetail" style="display:none">
 								<p>我是司机</p>
 								<p class="small">
-									本月发布拼车信息数：<span id="send_thismonth">1</span>
+									本月发布拼车信息数：<span id="send_thismonth">0</span>
 								</p>
 								<p class="small">
-									共发布拼车信息数: <span id="send_count">1</span>
+									共发布拼车信息数: <span id="send_count">0</span>
 									<img src="image/table.png" id="activeChart" title="点击查看详细信息">
 								</p>
 								<p class="small">
-									成功发起拼车次数: <span id="success_count">1</span>
+									成功发起拼车次数: <span id="success_count">0</span>
 								</p>
 							</div>
-							<div class="col-md-4 info-user-detailDiv">
+							<div class="col-md-4 info-user-detailDiv" id="pasdetail" style="display:none">
 								<p>我是乘客</p>
 								<p class="small">
 									本月拼车数: <span id="take_thismonth">0</span>
@@ -269,7 +281,7 @@
                                 </div>
                             </div>
                             <div class="col-md-12 pd20">
-                                <button class="btn btn-primary">保存修改</button>
+                                <button class="btn btn-primary" id="toSave">保存修改</button>
                             </div>
 						</div>
 					</div>
@@ -1898,25 +1910,7 @@
 	 	<script type="text/javascript" src="js/themes/skies.js"></script>
 	 	<script type="text/javascript" src="js/userinfo.js"></script>
 	 	<script type="text/javascript">
-	 		$(function(){
-	 			if(window.sessionStorage){
-					if(sessionStorage.getItem("id")){
-						$("#nameBtn").text("用户"+sessionStorage.getItem("name"));
-						$("#loginBtn").hide();
-						$("#nameBtn").show();
-						$("#logoutBtn").show();
-					}else{
-						location.href="index.html";
-					}
-				}else{
-					alert("this browser does not support sessionStorage");
-					window.close();
-				};
-	 		})
-	 		function logout(){
-				sessionStorage.clear();
-				location.reload();
-			}
+	 		
 	 	</script>
 	</body>
 </html>

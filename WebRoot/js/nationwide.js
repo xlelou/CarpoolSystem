@@ -1,4 +1,5 @@
 $(function(){
+    //获取拼车
 	$.ajax({
 		type:"POST",
 		url:"getallpost",
@@ -46,13 +47,13 @@ $(function(){
 		}
 	})
 	if(sessionStorage.getItem("type")){
-		$("#toPerson").attr("href","userinfo.html");
 		$(".nationpostbutton").attr("data-target","#PostModal");
 	}else{
 		$(".nationpostbutton").click(function(){
 			alert("请先登录");
 		})
 	}
+    //日历
 	$("#searchDate").datepicker({
   		showAnim:"slide",
   		dateFormat:"yy-mm-dd"
@@ -65,6 +66,7 @@ $(function(){
   		showAnim:"slide",
   		dateFormat:"yy-mm-dd"
     });
+    //发布
     $("#toPost").click(function(){
     	var dt = {};
     	if($("#PostModal").find("div.tab-pane").eq(0).hasClass("active")){

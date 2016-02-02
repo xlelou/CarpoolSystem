@@ -4,6 +4,7 @@ $(function(){
 			sessionStorage.setItem("city","广州");
 		}
 		if(sessionStorage.getItem("id")){//已登录
+			$("#toPerson").attr("href","userinfo.html");
 			$("#nameBtn").text("用户"+sessionStorage.getItem("name"));
 			$("#loginBtn").hide();
 			$("#nameBtn").show();
