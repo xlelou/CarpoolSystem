@@ -44,17 +44,212 @@ $(function(){
         alert("this browser does not support sessionStorage");
         window.close();
     };
+    //获取拼车
+    var getmessage = {};
+    getmessage.id = sessionStorage.getItem("id");
+    if(sessionStorage.getItem("type")=="1"){
+        $.ajax({
+            type:"POST",
+            url:"getsomeoneapply",
+            data:"dt="+JSON.stringify(getmessage),
+            success:function(dt){
+                dt = eval('('+dt+')');
+                for(var x = 0;x<dt.local.length;x++){
+                    var tr = document.createElement("tr");
+                    var td = document.createElement("td");
+                    td.innerHTML = dt.local[x].id;
+                    tr.appendChild(td);
+                    td = document.createElement("td");
+                    td.innerHTML = "<a href='localDetail?id=+"+dt.local[x].id+"'>"+dt.local[x].start+"到"+dt.local[x].dest+"</a>";
+                    tr.appendChild(td);
+                    td = document.createElement("td");
+                    td.innerHTML = dt.local[x].startdate;
+                    tr.appendChild(td);
+                    td = document.createElement("td");
+                    if(dt.local[x].status=="1"){
+                        td.innerHTML = "有效";
+                        tr.appendChild(td);
+                        $(tr).appendTo($("#localApplying").find("tbody"));
+                    }else if(dt.local[x].status=="2"){
+                        td.innerHTML = "已过期";
+                        tr.appendChild(td);
+                        $(tr).appendTo($("#localApplied").find("tbody"));
+                    }
+                }
+                for(var x = 0;x<dt.nation.length;x++){
+                    var tr = document.createElement("tr");
+                    var td = document.createElement("td");
+                    td.innerHTML = dt.nation[x].id;
+                    tr.appendChild(td);
+                    td = document.createElement("td");
+                    td.innerHTML = dt.nation[x].start;
+                    tr.appendChild(td);
+                    td = document.createElement("td");
+                    td.innerHTML = dt.nation[x].dest;
+                    tr.appendChild(td);
+                    td = document.createElement("td");
+                    td.innerHTML = dt.nation[x].startdate;
+                    tr.appendChild(td);
+                    td = document.createElement("td");
+                    td.innerHTML = "<a href='nationwideDetail.html?id="+dt.nation[x].id+"'>查看详情</a>";
+                    tr.appendChild(td);
+                    if(td.nation[x].status=="1"){
+                        $(tr).appendTo($("#nationApplying").find("tbody"));
+                    }else if(td.nation[x].status=="2"){
+                        $(tr).appendTo($("#nationApplied").find("tbody"));
+                    }
+                }
+            }
+        });
+    }else if(sessionStorage.getItem("type")=="2"){
+       $.ajax({
+            type:"POST",
+            url:"getsomeoneapply",
+            data:"dt="+JSON.stringify(getmessage),
+            success:function(dt){
+                dt = eval('('+dt+')');
+                for(var x = 0;x<dt.local.length;x++){
+                    var tr = document.createElement("tr");
+                    var td = document.createElement("td");
+                    td.innerHTML = dt.local[x].id;
+                    tr.appendChild(td);
+                    td = document.createElement("td");
+                    td.innerHTML = "<a href='localDetail?id=+"+dt.local[x].id+"'>"+dt.local[x].start+"到"+dt.local[x].dest+"</a>";
+                    tr.appendChild(td);
+                    td = document.createElement("td");
+                    td.innerHTML = dt.local[x].startdate;
+                    tr.appendChild(td);
+                    td = document.createElement("td");
+                    if(dt.local[x].status=="1"){
+                        td.innerHTML = "有效";
+                        tr.appendChild(td);
+                        $(tr).appendTo($("#localApplying").find("tbody"));
+                    }else if(dt.local[x].status=="2"){
+                        td.innerHTML = "已过期";
+                        tr.appendChild(td);
+                        $(tr).appendTo($("#localApplied").find("tbody"));
+                    }
+                }
+                for(var x = 0;x<dt.nation.length;x++){
+                    var tr = document.createElement("tr");
+                    var td = document.createElement("td");
+                    td.innerHTML = dt.nation[x].id;
+                    tr.appendChild(td);
+                    td = document.createElement("td");
+                    td.innerHTML = dt.nation[x].start;
+                    tr.appendChild(td);
+                    td = document.createElement("td");
+                    td.innerHTML = dt.nation[x].dest;
+                    tr.appendChild(td);
+                    td = document.createElement("td");
+                    td.innerHTML = dt.nation[x].startdate;
+                    tr.appendChild(td);
+                    td = document.createElement("td");
+                    td.innerHTML = "<a href='nationwideDetail.html?id="+dt.nation[x].id+"'>查看详情</a>";
+                    tr.appendChild(td);
+                    if(dt.nation[x].status=="1"){
+                        $(tr).appendTo($("#nationApplying").find("tbody"));
+                    }else if(dt.nation[x].status=="2"){
+                        $(tr).appendTo($("#nationApplied").find("tbody"));
+                    }
+                }
+            }
+        });
+        $.ajax({
+            type:"POST",
+            url:"getsomeonepost",
+            data:"dt="+JSON.stringify(getmessage),
+            success:function(dt){
+                dt = eval('('+dt+')');
+                for(var x = 0;x<dt.local.length;x++){
+                    var tr = document.createElement("tr");
+                    var td = document.createElement("td");
+                    td.innerHTML = dt.local[x].id;
+                    tr.appendChild(td);
+                    td = document.createElement("td");
+                    td.innerHTML = "<a href='localDetail?id=+"+dt.local[x].id+"'>"+dt.local[x].start+"到"+dt.local[x].dest+"</a>";
+                    tr.appendChild(td);
+                    td = document.createElement("td");
+                    td.innerHTML = dt.local[x].startdate;
+                    tr.appendChild(td);
+                    td = document.createElement("td");
+                    if(dt.local[x].status=="1"){
+                        td.innerHTML = "有效";
+                        tr.appendChild(td);
+                        $(tr).appendTo($("#localPosting").find("tbody"));
+                    }else if(dt.local[x].status=="2"){
+                        td.innerHTML = "已过期";
+                        tr.appendChild(td);
+                        $(tr).appendTo($("#localPosted").find("tbody"));
+                    }
+                }
+                for(var x = 0;x<dt.nation.length;x++){
+                    var tr = document.createElement("tr");
+                    var td = document.createElement("td");
+                    td.innerHTML = dt.nation[x].id;
+                    tr.appendChild(td);
+                    td = document.createElement("td");
+                    td.innerHTML = dt.nation[x].start;
+                    tr.appendChild(td);
+                    td = document.createElement("td");
+                    td.innerHTML = dt.nation[x].dest;
+                    tr.appendChild(td);
+                    td = document.createElement("td");
+                    td.innerHTML = dt.nation[x].startdate;
+                    tr.appendChild(td);
+                    td = document.createElement("td");
+                    td.innerHTML = "<a href='nationwideDetail.html?id="+dt.nation[x].id+"'>查看详情</a>";
+                    tr.appendChild(td);
+                    if(dt.nation[x].status=="1"){
+                        $(tr).appendTo($("#nationPosting").find("tbody"));
+                    }else if(dt.nation[x].status=="2"){
+                        $(tr).appendTo($("#nationPosted").find("tbody"));
+                    }
+                }
+            }
+        });
+    }
+    //获取短信
+    $.ajax({
+        type:"post",
+        url:"recmessage",
+        data:"dt="+JSON.stringify(getmessage),
+        success:function(dt){
+            dt = eval('('+dt+')');
+            for(var x = 0;x<dt.messages.length;x++){
+                var tr = document.createElement("tr");
+                var td = document.createElement("td");
+                td.innerHTML = dt.messages[x].id;
+                tr.appendChild(td);
+                td = document.createElement("td");
+                td.innerHTML = "<a href='javascript:void(0)'>"+dt.messages[x].title+"</a>";
+                tr.appendChild(td);
+                td = document.createElement("td");
+                td.innerHTML = dt.messages[x].from;
+                tr.appendChild(td);
+                td = document.createElement("td");
+                td.innerHTML = dt.messages[x].createtime;
+                tr.appendChild(td);
+                if(dt.messages[x].status=="1"){
+                    $(tr).appendTo($("#messageUnread").find("tbody"));
+                }else if(dt.messages[x].status=="2"){
+                    $(tr).appendTo($("#messageRead").find("tbody"));
+                }
+            }
+        }
+    })
+    //保存资料
     $("#toSave").click(function(){
         var x = {};
         x.id = sessionStorage.getItem("id");
-        x.password = $("#stLastPassword").val();
+        x.password = $("#stPastPassword").val();
         if($("#stEmail").val()!=""&&$("#stNewPassword").val()!=""){
             x.type = "3";
             x.newPassword = $("#stNewPassword").val();
             x.email = $("#stEmail").val();
         }else if($("#stEmail").val()==""){
             x.type = "2";
-            x.newPassword = $("#stNewPassword").val();pe = "2";
+            x.newPassword = $("#stNewPassword").val();
         }else if($("#stNewPassword").val()==""){
             x.type = "1";
             x.email = $("#stEmail").val();
@@ -62,7 +257,7 @@ $(function(){
         $.ajax({
             type:"POST",
             url:"saveinfo",
-            data:"dt="+JSON.stringify(x);
+            data:"dt="+JSON.stringify(x),
             success:function(dt){
                 if(dt=="success"){
                     alert("保存成功");

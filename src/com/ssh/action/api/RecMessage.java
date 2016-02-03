@@ -39,6 +39,7 @@ public class RecMessage extends ActionSupport {
 			mes.put("detail",messages.getString("detail"));
 			mes.put("createtime",messages.getString("detail"));
 			sql = "select * from user where id="+messages.getInt("from_id");
+			stmt = conn.createStatement();
 			ResultSet user = stmt.executeQuery(sql);
 			if(user.next()){
 				mes.put("from",user.getString("name"));

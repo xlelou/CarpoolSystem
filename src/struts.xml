@@ -25,6 +25,8 @@
 		<action name="checkapply" class="checkapply" method="check"></action>
 		<action name="drivercontrol" class="drivercontrol" method="control"></action>
 		<action name="getapply" class="getapply" method="get"></action>
+		<action name="getsomeonepost" class="getsomeonepost" method="get"></action>
+		<action name="getsomeoneapply" class="getsomeoneapply" method="get"></action>
 	</package>
 </struts> 
  

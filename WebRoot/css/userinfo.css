@@ -11,11 +11,11 @@
 #programPostedDiv .nav-tabs li,#programAppliedDiv .nav-tabs li{
     width: 25%;
 }
-#messageRead th:nth-child(1),#messageUnread th:nth-child(1){
+#messageRead th:nth-child(2),#messageUnread th:nth-child(2){
 	width: 60%;
 	text-align: left;
 }
-#messageRead td:nth-child(1),#messageUnread td:nth-child(1){
+#messageRead td:nth-child(2),#messageUnread td:nth-child(2){
 	width: 60%;
 	text-align: left;
 }
