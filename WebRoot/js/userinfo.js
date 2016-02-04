@@ -50,7 +50,7 @@ $(function(){
     if(sessionStorage.getItem("type")=="1"){
         $.ajax({
             type:"POST",
-            url:"getsomeoneapply",
+            url:"getsomeonepost",
             data:"dt="+JSON.stringify(getmessage),
             success:function(dt){
                 dt = eval('('+dt+')');
@@ -69,11 +69,11 @@ $(function(){
                     if(dt.local[x].status=="1"){
                         td.innerHTML = "有效";
                         tr.appendChild(td);
-                        $(tr).appendTo($("#localApplying").find("tbody"));
+                        $(tr).appendTo($("#localPosting").find("tbody"));
                     }else if(dt.local[x].status=="2"){
                         td.innerHTML = "已过期";
                         tr.appendChild(td);
-                        $(tr).appendTo($("#localApplied").find("tbody"));
+                        $(tr).appendTo($("#localPosted").find("tbody"));
                     }
                 }
                 for(var x = 0;x<dt.nation.length;x++){
@@ -93,10 +93,10 @@ $(function(){
                     td = document.createElement("td");
                     td.innerHTML = "<a href='nationwideDetail.html?id="+dt.nation[x].id+"'>查看详情</a>";
                     tr.appendChild(td);
-                    if(td.nation[x].status=="1"){
-                        $(tr).appendTo($("#nationApplying").find("tbody"));
-                    }else if(td.nation[x].status=="2"){
-                        $(tr).appendTo($("#nationApplied").find("tbody"));
+                    if(dt.nation[x].status=="1"){
+                        $(tr).appendTo($("#nationPosting").find("tbody"));
+                    }else if(dt.nation[x].status=="2"){
+                        $(tr).appendTo($("#nationPosted").find("tbody"));
                     }
                 }
             }
@@ -210,19 +210,23 @@ $(function(){
         });
     }
     //获取短信
+    var messages;
     $.ajax({
         type:"post",
         url:"recmessage",
         data:"dt="+JSON.stringify(getmessage),
         success:function(dt){
             dt = eval('('+dt+')');
+            messages = dt;
             for(var x = 0;x<dt.messages.length;x++){
                 var tr = document.createElement("tr");
+                var tr2 = document.createElement("tr");
+                var td2 = document.createElement("td");
                 var td = document.createElement("td");
                 td.innerHTML = dt.messages[x].id;
                 tr.appendChild(td);
                 td = document.createElement("td");
-                td.innerHTML = "<a href='javascript:void(0)'>"+dt.messages[x].title+"</a>";
+                td.innerHTML = "<a href='javascript:void(0)' data-toggle='modal' data-target='#myModal'>"+dt.messages[x].title+"</a>";
                 tr.appendChild(td);
                 td = document.createElement("td");
                 td.innerHTML = dt.messages[x].from;
@@ -236,6 +240,25 @@ $(function(){
                     $(tr).appendTo($("#messageRead").find("tbody"));
                 }
             }
+            $('#messageUnread').find("tbody").find("tr:even").find("a").click(function(){
+                $(this).css("font-weight","normal");
+                for(var x = 0;x<messages.messages.length;x++){
+                    if(messages.messages[x].id==$(this).parent().parent().find("td:first-child").text()){
+                        $("#myModalLabel").text(messages.messages[x].title);
+                        $("#myModalP").text(messages.messages[x].detail);
+                    }
+                }
+                var x = {};
+                x.id = $(this).parent().parent().find("td:first-child").text();
+                $.ajax({
+                    type:"post",
+                    url:"readmessage",
+                    data:"dt="+JSON.stringify(x),
+                    success:function(){
+                        
+                    }
+                })
+            })
         }
     })
     //保存资料

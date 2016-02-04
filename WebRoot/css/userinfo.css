@@ -19,3 +19,6 @@
 	width: 60%;
 	text-align: left;
 }
+#messageUnread table tbody tr td a{
+	font-weight: bold;
+}

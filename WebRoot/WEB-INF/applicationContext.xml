@@ -105,4 +105,5 @@
 	<bean id="getapply" class="com.ssh.action.api.GetApply" scope="prototype"></bean>
 	<bean id="getsomeonepost" class="com.ssh.action.api.GetSomeonePost" scope="prototype"></bean>
 	<bean id="getsomeoneapply" class="com.ssh.action.api.GetSomeoneApply" scope="prototype"></bean>
+	<bean id="driinvite" class="com.ssh.action.api.DriInvite" scope="prototype"></bean>
  </beans>

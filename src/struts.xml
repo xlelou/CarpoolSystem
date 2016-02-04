@@ -27,6 +27,7 @@
 		<action name="getapply" class="getapply" method="get"></action>
 		<action name="getsomeonepost" class="getsomeonepost" method="get"></action>
 		<action name="getsomeoneapply" class="getsomeoneapply" method="get"></action>
+		<action name="driinvite" class="driinvite" method="invite"></action>
 	</package>
 </struts> 
  

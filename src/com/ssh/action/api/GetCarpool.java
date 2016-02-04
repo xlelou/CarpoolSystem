@@ -31,7 +31,10 @@ public class GetCarpool extends ActionSupport {
 		JSONObject poster = new JSONObject();
 		JSONObject detail = new JSONObject();
 		if(type==1){//local
-			String sql = "select * from local where id="+trip_id;
+			String sql = "update local set viewtime=viewtime+1 where id"+trip_id;
+			stmt.executeUpdate(sql);
+			stmt = conn.createStatement();
+			sql = "select * from local where id="+trip_id;
 			ResultSet info = stmt.executeQuery(sql);
 			if(info.next()){
 				detail.put("driver_id",info.getInt("driver_id"));
@@ -82,7 +85,10 @@ public class GetCarpool extends ActionSupport {
 				response.getWriter().write(json.toString());
 			}
 		}else if(type==2){//nation
-			String sql = "select * from nation where id="+trip_id;
+			String sql = "update nation set viewtime=viewtime+1 where id"+trip_id;
+			stmt.executeUpdate(sql);
+			stmt = conn.createStatement();
+			sql = "select * from nation where id="+trip_id;
 			ResultSet info = stmt.executeQuery(sql);
 			if(info.next()){
 				detail.put("type",info.getInt("type"));
