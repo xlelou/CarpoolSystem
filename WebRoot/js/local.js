@@ -1,5 +1,6 @@
 $(function(){
 	if(window.sessionStorage){
+		$("#city").text(sessionStorage.getItem("city"));
 		if(sessionStorage.getItem("type")){//已登录
 			if(sessionStorage.getItem("type")=="1"){
 				$(".localpostbutton").attr("data-target","#PostModal");
@@ -14,6 +15,31 @@ $(function(){
 			})
 		}
 	}
+	//切换城市
+	$(".ul_city_list").each(function(){
+		$(this).find("li").find("a").click(function(e){
+			e.preventDefault();
+			sessionStorage.setItem("city",$(this).text());
+			location.reload();
+		})
+	})
+	//搜索
+	$("#search").click(function(){
+		var start = $("#searchStart").val();
+		var dest  = $("#searchDest").val();
+		$("#tbody").find("tr").each(function(){
+			var x = $(this).find("td").eq(1).text();
+			var str = x.split("到");
+			console.log(start);
+			console.log(str[0]);
+			console.log(str[0].indexOf(start));
+			if(str[0].indexOf(start)==-1||str[1].indexOf(dest)==-1){
+				$(this).hide();
+			}else{
+				$(this).show();
+			}
+		})
+	})
 	//发布拼车
 	$("#toPost").click(function(){
 		var dt = {};

@@ -155,7 +155,22 @@ $(function(){
 				})
 			}else{
 				$("#dritoapply").click(function(){
-					alert("邀请成功");
+					var dt = {};
+					dt.from_id = sessionStorage.getItem("id");
+					dt.to_id = $("#dtpasCode").text();
+					$.ajax({
+						type:"POST",
+						url:"driinvite",
+						data:"dt="+JSON.stringify(dt),
+						success:function(dt){
+							if(dt=="success"){
+								alert("邀请成功!");
+								$("#dritoapply").text("邀请已发出").unbind("click");
+							}else{
+								alert("邀请失败,请重试")
+							}
+						}
+					})
 				})
 			}
 		}else if(sessionStorage.getItem("type")=="2"){

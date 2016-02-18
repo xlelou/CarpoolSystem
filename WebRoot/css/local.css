@@ -34,6 +34,7 @@ h2 small{
 }
 .inputbox{
 	list-style: none;
+	margin-left: 50px;
 }
 .hotbox{
 	list-style: none;
@@ -288,4 +289,17 @@ ul.nav-tabs li{
 }
 .modal-footer{
     text-align: center;
+}
+.ul_city_list{
+	list-style: none;
+}
+.ul_city_list li a{
+	white-space: nowrap;
+	line-height: 30px;
+}
+.ul_city_list li a:link{
+	color: rgb(66,139,202);
+}
+.ul_city_list li a:hover{
+	color: black;
 }
