@@ -24,7 +24,7 @@ public class ReadMessage extends ActionSupport {
 		Statement stmt=conn.createStatement();
 		HttpServletRequest request = ServletActionContext.getRequest();
 		JSONObject dt = JSONObject.parseObject(request.getParameter("dt"));
-		String id = (String) dt.get("messageId");
+		String id = (String) dt.get("id");
 		String sql = "update message set status=2 where id="+id;
 		stmt.executeUpdate(sql);
 		HttpServletResponse response = ServletActionContext.getResponse();

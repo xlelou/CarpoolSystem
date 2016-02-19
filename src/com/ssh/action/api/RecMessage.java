@@ -37,12 +37,20 @@ public class RecMessage extends ActionSupport {
 			mes.put("title",messages.getString("title"));
 			mes.put("status",messages.getInt("status"));
 			mes.put("detail",messages.getString("detail"));
-			mes.put("createtime",messages.getString("detail"));
+			mes.put("createtime",messages.getString("createtime"));
 			sql = "select * from user where id="+messages.getInt("from_id");
-			stmt = conn.createStatement();
-			ResultSet user = stmt.executeQuery(sql);
-			if(user.next()){
-				mes.put("from",user.getString("name"));
+			if(messages.getInt("from_id")==0){
+				mes.put("from","系统");
+			}else{
+				stmt = conn.createStatement();
+				ResultSet user = stmt.executeQuery(sql);
+				if(user.next()){
+					if(user.getString("name").equals("0")){
+						mes.put("from","用户"+user.getString("phone"));
+					}else{
+						mes.put("from",user.getString("name"));
+					}
+				}
 			}
 			array.add(mes);
 		}

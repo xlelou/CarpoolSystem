@@ -3,6 +3,10 @@ function GetQueryString(name){
  	var r = window.location.search.substr(1).match(reg);
  	if(r!=null)return  unescape(r[2]); return null;
 };
+var map = new BMap.Map("map");    
+			map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);    
+			map.addControl(new BMap.NavigationControl());
+			map.enableScrollWheelZoom();
 $(function(){
 	//初始化
 	var posterphone;
@@ -138,6 +142,14 @@ $(function(){
 				$("#type1div").hide();
 				$("#type2div").show();
 			}
+			var driving = new BMap.DrivingRoute(map, {    
+			 renderOptions: {    
+			   map   : map,     
+			   panel : "results",    
+			   autoViewport: true    
+			 }    
+			});    
+			driving.search($("#dtStart").text(),$("#dtDest").text());
 		}
 	})
 	//绑定按钮事件

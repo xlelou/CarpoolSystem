@@ -240,8 +240,20 @@ $(function(){
                     $(tr).appendTo($("#messageRead").find("tbody"));
                 }
             }
-            $('#messageUnread').find("tbody").find("tr:even").find("a").click(function(){
-                $(this).css("font-weight","normal");
+            //未读数量提示
+            var unreadCount = $("#messageUnread").find("tbody").find("tr").length;
+            if(unreadCount!=0){
+                $("#unreadCount").text(unreadCount).show();
+            }
+            //短信操作
+            $('#messageUnread').find("tbody").find("tr").find("a").click(function(){
+                if($(this).css("font-weight")=="bold"){
+                    $(this).css("font-weight","normal");
+                    $("#unreadCount").text($("#unreadCount").text()-1);
+                    if($("#unreadCount").text()=="0"){
+                        $("#unreadCount").hide();
+                    }
+                }
                 for(var x = 0;x<messages.messages.length;x++){
                     if(messages.messages[x].id==$(this).parent().parent().find("td:first-child").text()){
                         $("#myModalLabel").text(messages.messages[x].title);
@@ -258,6 +270,14 @@ $(function(){
                         
                     }
                 })
+            })
+            $('#messageRead').find("tbody").find("tr").find("a").click(function(){
+                for(var x = 0;x<messages.messages.length;x++){
+                    if(messages.messages[x].id==$(this).parent().parent().find("td:first-child").text()){
+                        $("#myModalLabel").text(messages.messages[x].title);
+                        $("#myModalP").text(messages.messages[x].detail);
+                    }
+                }
             })
         }
     })

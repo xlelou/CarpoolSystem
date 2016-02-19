@@ -23,6 +23,67 @@ $(function(){
 			location.reload();
 		})
 	})
+	//地图
+	$("#searchStart").blur(function(){
+		var start = $("#searchStart").val();
+		var dest  = $("#searchDest").val();
+		if(start!=""&&dest!=""){
+			//输入起点跟终点显示路线
+			var driving = new BMap.DrivingRoute(map, {    
+			 renderOptions: {    
+			   map   : map,     
+			   panel : "results",    
+			   autoViewport: true    
+			 }    
+			});    
+			driving.search(start,dest);
+		}
+	})
+	$("#searchDest").blur(function(){
+		var start = $("#searchStart").val();
+		var dest  = $("#searchDest").val();
+		if(start!=""&&dest!=""){
+			//输入起点跟终点显示路线
+			var driving = new BMap.DrivingRoute(map, {    
+			 renderOptions: {    
+			   map   : map,     
+			   panel : "results",    
+			   autoViewport: true    
+			 }    
+			});    
+			driving.search(start,dest);
+		}
+	})
+	$("#driPostDest").blur(function(){
+		var start = $("#driPostStart").val();
+		var dest  = $("#driPostDest").val();
+		if(start!=""&&dest!=""){
+			//输入起点跟终点显示路线
+			var driving = new BMap.DrivingRoute(map2, {    
+			 renderOptions: {    
+			   map   : map2,     
+			   panel : "results",    
+			   autoViewport: true    
+			 }    
+			});
+			driving.search(start,dest);
+		}
+	})
+	$("#driPostStart").blur(function(){
+		var start = $("#driPostStart").val();
+		var dest  = $("#driPostDest").val();
+		if(start!=""&&dest!=""){
+			//输入起点跟终点显示路线
+			var driving = new BMap.DrivingRoute(map2, {    
+			 renderOptions: {    
+			   map   : map2,     
+			   panel : "results",    
+			   autoViewport: true    
+			 }    
+			}); 
+			driving.search(start,dest);
+		}
+	})
 	//搜索
 	$("#search").click(function(){
 		var start = $("#searchStart").val();
@@ -30,9 +91,6 @@ $(function(){
 		$("#tbody").find("tr").each(function(){
 			var x = $(this).find("td").eq(1).text();
 			var str = x.split("到");
-			console.log(start);
-			console.log(str[0]);
-			console.log(str[0].indexOf(start));
 			if(str[0].indexOf(start)==-1||str[1].indexOf(dest)==-1){
 				$(this).hide();
 			}else{

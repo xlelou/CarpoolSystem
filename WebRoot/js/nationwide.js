@@ -40,10 +40,18 @@ $(function(){
 				td.innerHTML = dt.detail[count].dest;
 				tr.appendChild(td);
 				td = document.createElement("td");
-				td.innerHTML = "<a href='nationwideDetail.html?id="+dt.detail[count].id+"'>申请加入</a>";
+				td.innerHTML = "<a href='nationwideDetail.html?id="+dt.detail[count].id+"'>查看详情</a>";
 				tr.appendChild(td);
 				tb.appendChild(tr);
-			}	
+			}
+            var driving = new BMap.DrivingRoute(map, {    
+             renderOptions: {    
+               map   : map,     
+               panel : "results",    
+               autoViewport: true    
+             }    
+            });    
+            driving.search(start,dest);	
 		}
 	})
 	if(sessionStorage.getItem("type")){
@@ -66,6 +74,50 @@ $(function(){
   		showAnim:"slide",
   		dateFormat:"yy-mm-dd"
     });
+    //地图
+    $("#searchStart").blur(function(){
+        var start = $("#searchStart").val();
+        var dest  = $("#searchDest").val();
+        if(start!=""&&dest!=""){
+            //输入起点跟终点显示路线
+            var driving = new BMap.DrivingRoute(map, {    
+             renderOptions: {    
+               map   : map,     
+               panel : "results",    
+               autoViewport: true    
+             }    
+            });    
+            driving.search(start,dest);
+        }
+    })
+    $("#searchDest").blur(function(){
+        var start = $("#searchStart").val();
+        var dest  = $("#searchDest").val();
+        if(start!=""&&dest!=""){
+            //输入起点跟终点显示路线
+            var driving = new BMap.DrivingRoute(map, {    
+             renderOptions: {    
+               map   : map,     
+               panel : "results",    
+               autoViewport: true    
+             }    
+            });    
+            driving.search(start,dest);
+        }
+    })
+    //搜索
+    $("#search").click(function(){
+        var start = $("#searchStart").val();
+        var dest = $("#searchDest").val();
+        var date = $("#searchDate").val();
+        $("#tbody").find("tr").each(function(){
+            if($(this).find("td").eq(1).text().indexOf(date)==-1||$(this).find("td").eq(4).text().indexOf(start)==-1||$(this).find("td").eq(5).text().indexOf(dest)==-1){
+                $(this).hide();
+            }else{
+                $(this).show();
+            }
+        })
+    })
     //发布
     $("#toPost").click(function(){
     	var dt = {};
